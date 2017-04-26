@@ -1,14 +1,5 @@
 <?php
-
-/**
- * Classe de gestion des paramètres de configuration
- * 
- * Inspirée du SimpleFramework de Frédéric Guillot
- * (https://github.com/fguillot/simpleFramework)
- *
- * @version 1.0
- * @author Baptiste Pesquet
- */
+ //Classe de gestion des paramètres de configuration
 class Configuration {
 
     /** Tableau des paramètres de configuration */

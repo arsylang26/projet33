@@ -1,21 +1,22 @@
 <?php
-
 require_once 'Framework/Controleur.php';
-require_once 'Modele/Billet.php';
+require_once 'Modele/Episode.php';
 
-class ControleurAccueil extends Controleur {
+class ControleurAccueil extends Controleur
+{
+    private $episode;
 
-    private $billet;
-
-    public function __construct() {
-        $this->billet = new Billet();
+    public function __construct()
+    {
+        $this->episode = new Episode();
     }
 
-    // Affiche la liste de tous les billets du blog
-    public function index() {
-        $billets = $this->billet->getBillets();
-        $this->genererVue(array('billets' => $billets));
+// Affiche la liste de tous les épisodes du blog
+    public function index()
+    {
+        $episodes = $this->episode->getEpisodes();
+       
+      $this->genererVue(array('episodes' => $episodes));
     }
 
 }
-
