@@ -14,10 +14,10 @@
 <div id="global">
     <header>
         <?php if (!isset($_SESSION['admin'])) : ?>
-            <a class="connect_admin" href="index.php/Contoleur/Administration">administration du site</a>
+            <a class="connect_admin" href="index.php/Controleur/administration">administration du site</a>
         <?php else : ?>
             <p class="connect_admin">connecté en tant que <?= $_SESSION['admin'] ?></p>
-            '<a class="deconnect_admin" href="index.php/Vue/Deconnexion">déconnexion</a>
+            '<a class="deconnect_admin" href="index.php/Controleur/deconnexion">déconnexion</a>
         <?php endif; ?>
         <div class="bienvenue">
             <a href="index.php"><h1>Billet simple pour l'Alaska</h1></a>
@@ -27,11 +27,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-3">
-                        <a href="index.php/Vue/CreerEpisode" class="btn-sm btn-primary"> écrire un nouvel
+                        <a href="index.php/Controleur/creerEpisode" class="btn-sm btn-primary"> écrire un nouvel
                             épisode </a>
                     </div>
                     <div class="col-sm-3 col-sm-offset-2">
-                        <a href="index.php/Vue/Abusif" class="btn-sm btn-primary"> voir les commentaires
+                        <a href="index.php/Controleur/affichAbusif" class="btn-sm btn-primary"> voir les commentaires
                             abusifs </a>
                     </div>
                 </div>
