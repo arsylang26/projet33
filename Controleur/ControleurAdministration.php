@@ -19,19 +19,22 @@ class ControleurAdministration extends Controleur
         $this->commentaire = new Commentaire();
         $this->admin = new Administration();
     }
-public function index(){
 
-}
+    public function index()
+    {
+
+    }
+
     public function administration()
     {
-      $this->genererVue(array('administration'));
+        $this->genererVue(array('administration'));
     }
 
 
     public function creerEpisode()
     {
-        $titre=$this->requete->getParametre("titre")=null;
-        $contenu=$this->requete->getParametre("contenu")=null;
+        $titre = $this->requete->getParametre("titre") = null;
+        $contenu = $this->requete->getParametre("contenu") = null;
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
@@ -44,14 +47,14 @@ public function index(){
     public function affichAbusif()
     {
         $commentairesAbusifs = $this->commentaire->getCommentairesAbusifs();
-        $this->genererVue(['commentairesAbusifs'=>$commentairesAbusifs]);
+        $this->genererVue(['commentairesAbusifs' => $commentairesAbusifs]);
     }
 
     public function modifEpisode()
     {
-        $id=$this->requete->getParametre("id");
-        $titre=$this->requete->getParametre("titre")=null;
-        $contenu=$this->requete->getParametre("contenu")=null;
+        $id = $this->requete->getParametre("id");
+        $titre = $this->requete->getParametre("titre") = null;
+        $contenu = $this->requete->getParametre("contenu") = null;
         $episode = $this->episode->getEpisode($id);
         if ($id && $titre && $contenu) {
             $episode['titre'] = $titre;
@@ -64,21 +67,27 @@ public function index(){
 
     public function supprEpisode()
 
-    { $id=$this->requete->getParametre("id");
+    {
+        $id = $this->requete->getParametre("id");
         $supprEpisode = $this->episode->delEpisode($id);
         header("location:index.php");
     }
 
     public function supprCommentaire()
     {
-        $ids=$this->requete->getParametre("id_del");
+        $ids = $this->requete->getParametre("id_del");
         $commentaireAbusif = $this->commentaire->delCommentaire($ids);
+<<<<<<< HEAD
        header("location:/Administration/affichAbusif/index.php");
+=======
+        header("location:/Vue/Administration/Abusif/");
+>>>>>>> cf312e6551116f2d0151d328317c148a9fdd26fa
     }
 
     public function connectAdmin()
-    {$admin=$this->requete->getParametre("admin");
-    $pwd=$this->requete->getParametre("pwd");
+    {
+        $admin = $this->requete->getParametre("admin");
+        $pwd = $this->requete->getParametre("pwd");
         if (isset($admin) && isset($pwd)) {
             $pass = sha1($pwd); //cryptage du mot de passe avant de faire la requête sur la BdD
             $idAdmin = $this->admin->getIdAdmin($admin, $pass)->fetch();
@@ -86,11 +95,16 @@ public function index(){
                 $_SESSION['admin'] = $admin;
                 header("location:index.php");
             } else {// sinon, retour à l'authentification
+<<<<<<< HEAD
                 header("location:/Administration/index.php");
+=======
+                header("location:/Vue/Administration/");
+>>>>>>> cf312e6551116f2d0151d328317c148a9fdd26fa
             }
         }
     }
-        public function deconnexion()
+
+    public function deconnexion()
     {
         session_destroy();
         header("location:index.php");

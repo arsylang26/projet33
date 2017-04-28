@@ -5,32 +5,33 @@ require_once 'modele/Episode.php';
 
 
 class ControleurEpisode extends Controleur
-    {
+{
     private $episode;
     private $commentaire;
 
     public function __construct()
     {
-        $this->episode= new Episode();
+        $this->episode = new Episode();
         $this->commentaire = new Commentaire();
     }
+
     // Affiche les détails sur un épisode
-    public function index() 
+    public function index()
     {
-        $idEpisode=$this->requete->getParametre("id");
+        $idEpisode = $this->requete->getParametre("id");
         $episode = $this->episode->getEpisode($idEpisode);
-        $commentaires = $this->commentaire->getCommentaires($idEpisode,0);
-       
-       $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire'=>$this->commentaire));
+        $commentaires = $this->commentaire->getCommentaires($idEpisode, 0);
+
+        $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire' => $this->commentaire));
 
     }
 
     public function commenter()
     {
-        $auteur=$this->requete->getParametre("auteur");
-        $idEpisode=$this->requete->getParametre("id_Episode");
-        $contenu=$this->requete->getParametre("contenu");
-        $parentCommentaire=$this->requete->getParametre("parent")=null;
+        $auteur = $this->requete->getParametre("auteur");
+        $idEpisode = $this->requete->getParametre("id_Episode");
+        $contenu = $this->requete->getParametre("contenu");
+        $parentCommentaire = $this->requete->getParametre("parent") = null;
         try {
             if (!$parentCommentaire) { //s'il était null alors
                 $rangCommentaire = 0; // c'est le commentaire de l'épisode
@@ -47,7 +48,22 @@ class ControleurEpisode extends Controleur
             $this->erreur($e->getMessage());
         }
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-       header("location:/Episode/index/".$idEpisode);
+        header("location:/Episode/index/" . $idEpisode);
+    }
+
+    public function signalerAbusif()
+    {
+        $idEpisode = $this->requete->getParametre("id_episode");
+        $idCommentaire = $this->requete->getParametre("id");
+        $this->commentaire->signCommentaireAbusif($idCommentaire);
+        header("location:index.php?action=episode&id=" . $idEpisode);
+    }
+
+
+    public function erreur($msgErreur)
+    {
+        $msgErreur = $this->requete->getParametre(); // à voir
+        $this->genererVue(array('msgErreur' => $msgErreur));
     }
     
     public function signalerAbusif()
