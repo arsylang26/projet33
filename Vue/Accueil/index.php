@@ -3,10 +3,10 @@
     ?>
     <article>
         <header>
-            <a href="<?= "index.php?action=episode&id=" . $episode['id'] ?>">
-                <h1 class="titreEpisode"><?= htmlspecialchars($episode['titre']) ?></h1>
+            <a href="<?= "episode/index/" . $this->nettoyer($episode['id']) ?>">
+                <h1 class="titreEpisode"><?= $this->nettoyer($episode['titre']) ?></h1>
             </a>
-            <time><?= $episode['date'] ?></time>
+            <time><?= $this->nettoyer($episode['date']) ?></time>
         </header>
         <div class="episode_contenu">
             <?php
@@ -20,8 +20,8 @@
         </div>
         <?php if (isset($_SESSION['admin'])) { ?>
             <a type="button" class="confirm btn btn-warning btn-sm"
-               href="<?= "index.php?action=supprEpisode&id=" . $episode['id'] ?>">supprimer l'épisode </a>
-            <a class="btn btn-primary btn-sm" href="<?= "index.php?action=modifEpisode&id=" . $episode['id'] ?>">
+               href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer l'épisode </a>
+            <a class="btn btn-primary btn-sm" href="<?= "administration/modifEpisode/".$this->nettoyer($episode['id']) ?>">
                 modifier l'épisode</a>
         <?php }
         ?>

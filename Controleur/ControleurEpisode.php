@@ -1,7 +1,7 @@
 <?php
 require_once 'Framework/Controleur.php';
 require_once 'Modele/Commentaire.php';
-require_once 'modele/Episode.php';
+require_once 'Modele/Episode.php';
 
 
 class ControleurEpisode extends Controleur
@@ -25,11 +25,12 @@ class ControleurEpisode extends Controleur
         $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire' => $this->commentaire));
 
     }
-
+    
+    // Commenter un épisode ou un commentaire
     public function commenter()
     {
         $auteur = $this->requete->getParametre("auteur");
-        $idEpisode = $this->requete->getParametre("id_Episode");
+        $idEpisode = $this->requete->getParametre("id");
         $contenu = $this->requete->getParametre("contenu");
         $parentCommentaire = $this->requete->getParametre("parent") = null;
         try {
@@ -50,7 +51,8 @@ class ControleurEpisode extends Controleur
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
         header("location:/Episode/index/" . $idEpisode);
     }
-
+    
+    // marquer comme abusif un commentaire
     public function signalerAbusif()
     {
         $idEpisode = $this->requete->getParametre("id_episode");
@@ -59,25 +61,13 @@ class ControleurEpisode extends Controleur
         header("location:index.php?action=episode&id=" . $idEpisode);
     }
 
-
-    public function erreur($msgErreur)
+    // gére les messages d'erreur
+    public function erreur()
     {
         $msgErreur = $this->requete->getParametre(); // à voir
         $this->genererVue(array('msgErreur' => $msgErreur));
     }
     
-    public function signalerAbusif()
-    {
-        $idEpisode = $this->requete->getParametre("id_Episode");
-        $idCommentaire = $this->requete->getParametre("id");
-        $this->commentaire->signCommentaireAbusif($idCommentaire);
-        $this->executerAction("index");
-    }
-    
- public function erreur($msgErreur)
-    {
-        $vue = new Vue("Erreur");
-        $vue->generer(array('msgErreur' => $msgErreur));
-    }
+  
 }
     

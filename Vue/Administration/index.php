@@ -1,7 +1,7 @@
 <!-- jforteroche adminjf26-->
 <div class="admin col-lg-4 col-lg-offset-4">
 
-        <form method="post" role="form"  action="index.php?action=connexion">
+        <form method="post" role="form"  action="administration/connexion">
             <fieldset>
                 <legend>Connexion à l'administration du site</legend>
                 <div class="form-group">

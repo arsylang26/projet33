@@ -22,13 +22,13 @@ class ControleurAdministration extends Controleur
 
     public function index()
     {
-
-    }
-
-    public function administration()
-    {
         $this->genererVue(array('administration'));
     }
+
+   // public function administration()
+   // {
+     //   $this->genererVue(array('administration'));
+   // }
 
 
     public function creerEpisode()
@@ -77,11 +77,8 @@ class ControleurAdministration extends Controleur
     {
         $ids = $this->requete->getParametre("id_del");
         $commentaireAbusif = $this->commentaire->delCommentaire($ids);
-<<<<<<< HEAD
-       header("location:/Administration/affichAbusif/index.php");
-=======
         header("location:/Vue/Administration/Abusif/");
->>>>>>> cf312e6551116f2d0151d328317c148a9fdd26fa
+>
     }
 
     public function connectAdmin()
@@ -95,11 +92,7 @@ class ControleurAdministration extends Controleur
                 $_SESSION['admin'] = $admin;
                 header("location:index.php");
             } else {// sinon, retour à l'authentification
-<<<<<<< HEAD
-                header("location:/Administration/index.php");
-=======
                 header("location:/Vue/Administration/");
->>>>>>> cf312e6551116f2d0151d328317c148a9fdd26fa
             }
         }
     }

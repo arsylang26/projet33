@@ -2,7 +2,7 @@
 
 
 <section class="col-sm-8 table-responsive">
-    <form method="post" action="index.php?action=supprCommentaire">
+    <form method="post" action="administration/supprCommentaire/">
         <table class="table table-bordered table-striped table-condensed">
             <caption>
                 commentaires signalés comme abusifs par les lecteurs
@@ -21,9 +21,9 @@
             foreach ($commentairesAbusifs as $abusif):
 
                 echo '<tr> 
-          <td>' . $abusif['date'] . '</td>
-          <td>' . htmlspecialchars($abusif['auteur']) . '</td>
-          <td>' . htmlspecialchars($abusif['contenu']) . '</td>
+          <td>' . $this->nettoyer($abusif['date']) . '</td>
+          <td>' . $this->nettoyer($abusif['auteur']) . '</td>
+          <td>' . $this->nettoyer($abusif['contenu']) . '</td>
           <td><input type="checkbox" name="id_del[]" value="' . $abusif['id'] . '" /></td>
           </tr>';
             endforeach;
