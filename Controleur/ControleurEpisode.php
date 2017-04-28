@@ -49,4 +49,19 @@ class ControleurEpisode extends Controleur
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
        header("location:/Episode/index/".$idEpisode);
     }
+    
+    public function signalerAbusif()
+    {
+        $idEpisode = $this->requete->getParametre("id_Episode");
+        $idCommentaire = $this->requete->getParametre("id");
+        $this->commentaire->signCommentaireAbusif($idCommentaire);
+        $this->executerAction("index");
+    }
+    
+ public function erreur($msgErreur)
+    {
+        $vue = new Vue("Erreur");
+        $vue->generer(array('msgErreur' => $msgErreur));
+    }
 }
+    

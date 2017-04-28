@@ -73,7 +73,7 @@ public function index(){
     {
         $ids=$this->requete->getParametre("id_del");
         $commentaireAbusif = $this->commentaire->delCommentaire($ids);
-       header("location:/Administration/affichAbusif");
+       header("location:/Administration/affichAbusif/index.php");
     }
 
     public function connectAdmin()
@@ -86,7 +86,7 @@ public function index(){
                 $_SESSION['admin'] = $admin;
                 header("location:index.php");
             } else {// sinon, retour à l'authentification
-                header("location:/Administration/index");
+                header("location:/Administration/index.php");
             }
         }
     }
