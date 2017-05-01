@@ -78,7 +78,6 @@ class ControleurAdministration extends Controleur
         $ids = $this->requete->getParametre("id_del");
         $commentaireAbusif = $this->commentaire->delCommentaire($ids);
         header("location:/Vue/Administration/Abusif/");
->
     }
 
     public function connectAdmin()
@@ -101,7 +100,6 @@ class ControleurAdministration extends Controleur
     {
         session_destroy();
         header("location:index.php");
-
     }
 
 

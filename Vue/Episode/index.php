@@ -30,7 +30,9 @@
 <hr/>
 <header>
     <?php
-    echo '<h1 id="titreReponses">Réponses à : ' .$this->nettoyer($episode['titre']) . '</h1>';
+    if ($commentaires->fetch()) {
+        echo '<h1 id="titreReponses">Réponses à : ' . $this->nettoyer($episode['titre']) . '</h1>';
+    }
     ?>
 </header>
 <article>
