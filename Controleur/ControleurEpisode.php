@@ -32,7 +32,7 @@ class ControleurEpisode extends Controleur
         $auteur = $this->requete->getParametre("auteur");
         $idEpisode = $this->requete->getParametre("id");
         $contenu = $this->requete->getParametre("contenu");
-        $parentCommentaire = $this->requete->getParametre("parent")=null;
+        $parentCommentaire = $this->requete->getParametre("parent");
         try {
             if (!$parentCommentaire) { //s'il était null alors
                 $rangCommentaire = 0; // c'est le commentaire de l'épisode

@@ -32,7 +32,7 @@
     <?php
     if ($commentaires->fetch()) {
         echo '<h1 id="titreReponses">Réponses à : ' . $this->nettoyer($episode['titre']) . '</h1>';
-    }
+    }else {echo'Cet épisode n\'a encore aucun commentaire';}
     ?>
 </header>
 <article>
