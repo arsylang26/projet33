@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Controleur';
+require_once 'Framework/Controleur.php';
 require_once 'Modele/Episode.php';
 require_once 'Modele/Commentaire.php';
 require_once 'Modele/Administration.php';
@@ -33,8 +33,8 @@ class ControleurAdministration extends Controleur
 
     public function creerEpisode()
     {
-        $titre = $this->requete->getParametre("titre") = null;
-        $contenu = $this->requete->getParametre("contenu") = null;
+        $titre = $this->requete->getParametre("titre",null);
+        $contenu = $this->requete->getParametre("contenu",null);
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
@@ -53,8 +53,8 @@ class ControleurAdministration extends Controleur
     public function modifEpisode()
     {
         $id = $this->requete->getParametre("id");
-        $titre = $this->requete->getParametre("titre") = null;
-        $contenu = $this->requete->getParametre("contenu") = null;
+        $titre = $this->requete->getParametre("titre",null);
+        $contenu = $this->requete->getParametre("contenu",null);
         $episode = $this->episode->getEpisode($id);
         if ($id && $titre && $contenu) {
             $episode['titre'] = $titre;
@@ -80,7 +80,7 @@ class ControleurAdministration extends Controleur
         header("location:/Vue/Administration/Abusif/");
     }
 
-    public function connectAdmin()
+    public function connexion()
     {
         $admin = $this->requete->getParametre("admin");
         $pwd = $this->requete->getParametre("pwd");
@@ -89,9 +89,10 @@ class ControleurAdministration extends Controleur
             $idAdmin = $this->admin->getIdAdmin($admin, $pass)->fetch();
             if ($idAdmin) {// si identifiant /pwd ok on ouvre la session admin
                 $_SESSION['admin'] = $admin;
-                header("location:index.php");
+
+                $this->rediriger("accueil");
             } else {// sinon, retour à l'authentification
-                header("location:/Vue/Administration/");
+                $this->rediriger("administration");
             }
         }
     }
@@ -99,7 +100,7 @@ class ControleurAdministration extends Controleur
     public function deconnexion()
     {
         session_destroy();
-        header("location:index.php");
+        $this->rediriger("accueil");
     }
 
 

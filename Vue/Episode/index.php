@@ -9,7 +9,7 @@
         commenter
     </button>
     <div class="commentaire_form collapse" id="commentaire_form_episode">
-        <form method="post" action="episode/commenterEpisode">
+        <form method="post" action="episode/commenter">
             <div class="form-group">
                 <p>votre commentaire:</p>
             </div>

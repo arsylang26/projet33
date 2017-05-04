@@ -1,6 +1,6 @@
 <?php
-
-// Contrôleur frontal : instancie un routeur pour traiter la requête entrante
+session_start();
+// Contsrôleur frontal : instancie un routeur pour traiter la requête entrante
 
 require 'Framework/Routeur.php';
 

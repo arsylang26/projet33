@@ -37,9 +37,12 @@ class Requete {
      * @return string Valeur du paramètre
      * @throws Exception Si le paramètre n'existe pas dans la requête
      */
-    public function getParametre($nom) {
+    public function getParametre($nom,$default='undefined') {
         if ($this->existeParametre($nom)) {
             return $this->parametres[$nom];
+        }
+        else if ($default!='undefined'){
+            return $default;
         }
         else {
             throw new Exception("Paramètre '$nom' absent de la requête");

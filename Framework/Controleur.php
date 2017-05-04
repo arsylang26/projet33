@@ -15,7 +15,9 @@ abstract class Controleur {
     /** Action à réaliser */
     private $action;
     
-    /** Requête entrante */
+    /** Requête entrante
+     * var Requete
+     */
     protected $requete;
 
     /**
@@ -66,6 +68,18 @@ abstract class Controleur {
         // Instanciation et génération de la vueF
         $vue = new Vue($this->action, $controleur);
         $vue->generer($donneesVue);
+    }
+    /**
+     * Effectue une redirection vers un contrôleur et une action spécifiques
+     *
+     * @param string $controleur Contrôleur
+     * @param type $action Action Action
+     */
+    protected function rediriger($controleur, $action = null)
+    {
+        $racineWeb = Configuration::get("racineWeb", "/");
+        // Redirection vers l'URL /racine_site/controleur/action
+        header("Location:" . $racineWeb . $controleur . "/" . $action);
     }
 
 }

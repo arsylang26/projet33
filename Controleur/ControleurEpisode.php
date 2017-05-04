@@ -32,7 +32,7 @@ class ControleurEpisode extends Controleur
         $auteur = $this->requete->getParametre("auteur");
         $idEpisode = $this->requete->getParametre("id");
         $contenu = $this->requete->getParametre("contenu");
-        $parentCommentaire = $this->requete->getParametre("parent");
+        $parentCommentaire = $this->requete->getParametre("parent",null);
         try {
             if (!$parentCommentaire) { //s'il était null alors
                 $rangCommentaire = 0; // c'est le commentaire de l'épisode
@@ -49,7 +49,7 @@ class ControleurEpisode extends Controleur
             $this->erreur($e->getMessage());
         }
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-        header("location:/Episode/index/" . $idEpisode);
+        header("location:Episode/index/" . $idEpisode);
     }
     
     // marquer comme abusif un commentaire

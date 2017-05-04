@@ -14,7 +14,7 @@
 <div id="global">
     <header>
         <?php if (!isset($_SESSION['admin'])) : ?>
-            <a class="connect_admin" href="administration/connectAdmin">administration du site</a>
+            <a class="connect_admin" href="administration/index">administration du site</a>
         <?php else : ?>
             <p class="connect_admin">connecté en tant que <?= $_SESSION['admin'] ?></p>
             '<a class="deconnect_admin" href="administration/deconnexion">déconnexion</a>
