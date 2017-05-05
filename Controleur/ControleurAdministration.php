@@ -25,12 +25,6 @@ class ControleurAdministration extends Controleur
         $this->genererVue(array('administration'));
     }
 
-   // public function administration()
-   // {
-     //   $this->genererVue(array('administration'));
-   // }
-
-
     public function creerEpisode()
     {
         $titre = $this->requete->getParametre("titre",null);
@@ -38,7 +32,7 @@ class ControleurAdministration extends Controleur
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
-            header("location:index.php");
+          $this->rediriger("accueil");
 
         }
         $this->genererVue(array());
@@ -60,7 +54,7 @@ class ControleurAdministration extends Controleur
             $episode['titre'] = $titre;
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);
-            header("location:index.php");
+            $this->rediriger("accueil");
         }
         $this->genererVue(array('episode' => $episode));
     }
@@ -70,14 +64,14 @@ class ControleurAdministration extends Controleur
     {
         $id = $this->requete->getParametre("id");
         $supprEpisode = $this->episode->delEpisode($id);
-        header("location:index.php");
+     $this->rediriger("accueil");
     }
 
     public function supprCommentaire()
     {
         $ids = $this->requete->getParametre("id_del");
         $commentaireAbusif = $this->commentaire->delCommentaire($ids);
-        header("location:/Vue/Administration/Abusif/");
+        $this->rediriger("administration/affichAbusif");
     }
 
     public function connexion()

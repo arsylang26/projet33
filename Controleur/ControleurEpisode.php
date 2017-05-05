@@ -49,7 +49,7 @@ class ControleurEpisode extends Controleur
             $this->erreur($e->getMessage());
         }
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-        header("location:Episode/index/" . $idEpisode);
+        $this->rediriger("episode" . $idEpisode);
     }
     
     // marquer comme abusif un commentaire
@@ -58,7 +58,7 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id_episode");
         $idCommentaire = $this->requete->getParametre("id");
         $this->commentaire->signCommentaireAbusif($idCommentaire);
-        header("location:index.php?action=episode&id=" . $idEpisode);
+        $this->rediriger("episode" . $idEpisode);
     }
 
     // gére les messages d'erreur

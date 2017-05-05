@@ -1,23 +1,39 @@
 <?php
 
-/*
- * Classe modélisant une requête HTTP entrante
+require_once 'Session.php';
+
+/**
+ * Classe modélisant une requête HTTP entrante.
  * 
- * @version 1.0
  * @author Baptiste Pesquet
  */
-class Requete {
-
+class Requete
+{
     /** Tableau des paramètres de la requête */
     private $parametres;
+
+    /** Objet session associé à la requête */
+    private $session;
 
     /**
      * Constructeur
      * 
      * @param array $parametres Paramètres de la requête
      */
-    public function __construct($parametres) {
+    public function __construct($parametres)
+    {
         $this->parametres = $parametres;
+        $this->session = new Session();
+    }
+
+    /**
+     * Renvoie l'objet session associé à la requête
+     * 
+     * @return Session Objet session
+     */
+    public function getSession()
+    {
+        return $this->session;
     }
 
     /**
