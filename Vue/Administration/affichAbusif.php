@@ -1,11 +1,15 @@
 <?php $this->titre = "Alaska: suppression des commentaires abusifs" ?>;
 
-
+<?php
+if ($nbCommentairesAbusifs>0){ ?>
 <section class="col-sm-8 table-responsive">
-    <form method="post" action="administration/supprCommentaire/">
+    <form method="post" action="administration/supprCommentaire">
         <table class="table table-bordered table-striped table-condensed">
             <caption>
-                commentaires signalés comme abusifs par les lecteurs
+
+                <?= $nbCommentairesAbusifs?>. 'commentaires signalés comme abusifs par les lecteurs';
+
+
             </caption>
             <tr>
                 <th>Date</th>
@@ -47,3 +51,4 @@
     </form>
 
 </section>
+<?php } ?>

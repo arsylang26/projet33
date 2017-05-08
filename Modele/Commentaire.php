@@ -64,11 +64,27 @@ class Commentaire extends Modele
         return $commentairesAbusifs;
     }
 
+    public function getNbCommentairesAbusifs()
+    {
+        $sql='SELECT COUNT(*) FROM commentaire WHERE abusif>=1';
+        $res=$this->executerRequete($sql);
+        $nbCommentairesAbusifs=$res->fetch();
+        return $nbCommentairesAbusifs;
+    }
+
 // renvoie les enfants d'un commentaire  classés par niveau pour l'affichage (le parent du commentaire est le commentaire de rang immédiatement inférieur)
     public function getEnfantCommentaire($idParentCommentaire)
     {
         $sql = 'SELECT id, DATE_FORMAT(date_commentaire,\'Le %d/%m/%Y à %Hh%i\') AS date, auteur, contenu, rang_commentaire AS rang, parent_commentaire AS parent FROM commentaires WHERE parent_commentaire=? ORDER BY rang';
         $enfantCommentaire = $this->executerRequete($sql, array($idParentCommentaire));
         return $enfantCommentaire;
+    }
+
+    public function getNbCommentaires()
+    {
+        $sql = 'SELECT COUNT(*) AS nbCommentaires FROM commentaire';
+        $res = $this->executerRequete($sql);
+        $ligne = $res->fetch();  // Le résultat comporte toujours 1 ligne
+        return $ligne['nbCommentaires'];
     }
 }

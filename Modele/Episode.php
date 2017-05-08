@@ -42,10 +42,17 @@ class Episode extends Modele
 // Mettre à jour un épisode
     public function modEpisode($episode)
     {
-        // mise à jour de l'épisode
-
         $sql = 'UPDATE episodes SET titre=? , contenu=? WHERE id=?';
         $this->executerRequete($sql, array($episode['titre'], $episode['contenu'], $episode['id']));
-
     }
+    //retourne le nombre total d'épisodes enregistrés
+    public function getNbEpisodes()
+    {
+        $sql = 'SELECT count(*) AS nbEpisodes FROM episode';
+        $res = $this->executerRequete($sql);
+        $ligne = $res->fetch();  // Le résultat comporte toujours 1 ligne
+        return $ligne['nbEpisodes'];
+    }
+
+
 }

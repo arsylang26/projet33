@@ -4,9 +4,6 @@ require_once 'Configuration.php';
 
 /**
  * Classe modélisant une vue
- *
- * @version 1.0
- * @author Baptiste Pesquet
  */
 class Vue {
 

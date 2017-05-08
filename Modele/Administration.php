@@ -1,5 +1,5 @@
 <?php
-require_once 'Framework/Modele.php';
+/**require_once 'Framework/Modele.php';
 class Administration extends Modele {
     public function getIdAdmin($admin,$pwd){
         $sql='SELECT id FROM administration  WHERE  identifiant=? AND pwd=?';
@@ -7,4 +7,4 @@ class Administration extends Modele {
         
         return $idAdmin;
     }
-}
+}*/

@@ -1,4 +1,7 @@
 <!-- jforteroche adminjf26-->
+<?php
+$this->titre="Alaska - Connexion";
+?>
 <div class="admin col-lg-4 col-lg-offset-4">
 
         <form method="post" role="form"  action="administration/connexion">
@@ -17,3 +20,7 @@
         </form>
 
 </div>
+<?php if(isset($msgErreur)) {
+    echo'. $msgErreur.';
+}
+?>

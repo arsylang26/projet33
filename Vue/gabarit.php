@@ -16,8 +16,14 @@
         <?php if (!isset($_SESSION['admin'])) : ?>
             <a class="connect_admin" href="administration/index">administration du site</a>
         <?php else : ?>
-            <p class="connect_admin">connecté en tant que <?= $_SESSION['admin'] ?></p>
-            '<a class="deconnect_admin" href="administration/deconnexion">déconnexion</a>
+            <div class="connect_admin">
+                <form action="connexion/deconnecter" method="POST">
+                    connecté en tant que <?= $_SESSION['admin'] ?>
+                    <button class="deconnect btn btn-warning" name="#" data-confirm="Vous déconnecter ?" type="submit">
+                        déconnexion
+                    </button>
+                </form>
+            </div>
         <?php endif; ?>
         <div class="bienvenue">
             <a href="index.php"><h1>Billet simple pour l'Alaska</h1></a>
