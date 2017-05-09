@@ -43,8 +43,8 @@
             foreach ($commentaires as $lignee) { ?>
                 <div class="commentaire_affich">
                     <!-- afichage de la date,auteur, contenu commentaire et bouton commenter-->
-                    <p><?= $this->nettoyer($lignee['date']) ?> , <strong><?= $this->nettoyer($lignee['auteur']) ?></strong> a dit : </p>
-                    <p class="commentaire_contenu"><?=$this->nettoyer($lignee['contenu']) ?></p>
+                    <p><?= htmlspecialchars($lignee['date']) ?> , <strong><?= htmlspecialchars($lignee['auteur']) ?></strong> a dit : </p>
+                    <p class="commentaire_contenu"><?=htmlspecialchars($lignee['contenu']) ?></p>
                     <?php
                     if ($lignee['rang'] < 3) {
                         echo '<button id="bouton_commenter" type = "button" class="btn-xs btn-primary" data-toggle = "collapse" data-target = "#commentaire_form_' . $lignee['id'] . '">commenter</button >';

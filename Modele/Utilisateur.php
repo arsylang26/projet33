@@ -32,8 +32,12 @@ class Utilisateur extends Modele {
         $sql = "SELECT id AS idAdmin, identifiant , pwd  FROM administration WHERE identifiant=? and pwd=?";
         $utilisateur = $this->executerRequete($sql, array($admin, $pwd));
         if ($utilisateur->rowCount() == 1)
+        {
             return $utilisateur->fetch();  // Accès à la première ligne de résultat
+        }
         else
+        {
             throw new Exception("Aucun utilisateur ne correspond aux identifiants fournis");
+        }
     }
 }

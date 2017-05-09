@@ -14,7 +14,7 @@
 <div id="global">
     <header>
         <?php if (!isset($_SESSION['admin'])) : ?>
-            <a class="connect_admin" href="administration/index">administration du site</a>
+            <a class="connect_admin" href="connexion">administration du site</a>
         <?php else : ?>
             <div class="connect_admin">
                 <form action="connexion/deconnecter" method="POST">
