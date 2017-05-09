@@ -58,6 +58,7 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id_episode");
         $idCommentaire = $this->requete->getParametre("id");
         $this->commentaire->signCommentaireAbusif($idCommentaire);
+        //$this->message erreur, warning
         $this->rediriger("episode" . $idEpisode);
     }
 

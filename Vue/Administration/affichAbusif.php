@@ -1,5 +1,5 @@
-<?php $this->titre = "Alaska: suppression des commentaires abusifs" ?>;
-
+<?php $this->titre = "Alaska: gestion des commentaires abusifs" ?>
+<h2><?=$this->titre ?></h2>
 <?php
 if ($nbCommentairesAbusifs>0){ ?>
 <section class="col-sm-8 table-responsive">
@@ -7,7 +7,7 @@ if ($nbCommentairesAbusifs>0){ ?>
         <table class="table table-bordered table-striped table-condensed">
             <caption>
 
-                <?= $nbCommentairesAbusifs?>. 'commentaires signalés comme abusifs par les lecteurs';
+                <?= $nbCommentairesAbusifs?>. commentaires signalés comme abusifs par les lecteurs
 
 
             </caption>
@@ -31,7 +31,7 @@ if ($nbCommentairesAbusifs>0){ ?>
           <td><input type="checkbox" name="id_del[]" value="' . $abusif['id'] . '" /></td>
           </tr>';
             endforeach;
-            ?>;
+            ?>
 
             <tr>
                 <td colspan="4">

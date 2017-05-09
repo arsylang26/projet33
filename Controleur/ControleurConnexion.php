@@ -28,7 +28,7 @@ class ControleurConnexion extends Controleur
             {
                 $utilisateur = $this->utilisateur->getUtilisateur($admin, $pwd);
                 $this->requete->getSession()->setAttribut("idAdmin", $utilisateur['idAdmin']);
-                $this->requete->getSession()->setAttribut("identifiant", $utilisateur['identifiant']);
+                $this->requete->getSession()->setAttribut("admin", $utilisateur['identifiant']);
                 $this->rediriger("accueil");
             } 
             else $this->genererVue(array('msgErreur' => 'Identifiant ou mot de passe incorrects', "index"));

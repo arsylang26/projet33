@@ -29,7 +29,7 @@
             <a href="index.php"><h1>Billet simple pour l'Alaska</h1></a>
             <p>Bienvenue sur le livre en ligne de Jean Forteroche.</p>
         </div>
-        <?php if (isset($_SESSION['admin'])) : ?>
+        <?php  if (isset($_SESSION['admin'])) : ?>
             <div class="container">
                 <div class="row">
                     <div class="col-sm-2 col-sm-offset-3">
@@ -44,7 +44,7 @@
             </div>
         <?php endif; ?>
     </header>
-
+<h2><?= $titre ?></h2>
     <div id="contenu">
         <?= $contenu ?>
     </div>

@@ -1,5 +1,5 @@
 <?php $this->titre="Alaska: rédaction"; ?>
-        <form class="col-lg-offset-1 col-lg-10" method="POST" action="index.php?action=creerEpisode">
+        <form class="col-lg-offset-1 col-lg-10" method="POST" action="administration/creerEpisode">
            <!--affichage du formulaire de saisie, prérempli s'il s'agit d'une modification d'un épisode-->
 
             <div class ="form-group">

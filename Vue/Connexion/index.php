@@ -1,11 +1,9 @@
-/**
-*<!-- jforteroche adminjf26-->
-*<?php
+<?php
 $this->titre="Alaska - Connexion";
 ?>
 <div class="admin col-lg-4 col-lg-offset-4">
 
-        <form method="post" role="form"  action="administration/connexion">
+        <form method="post" role="form"  action="connexion/connecter">
             <fieldset>
                 <legend>Connexion à l'administration du site</legend>
                 <div class="form-group">
@@ -19,10 +17,8 @@ $this->titre="Alaska - Connexion";
                 </div>
             </fieldset>
         </form>
-
 </div>
 <?php if(isset($msgErreur)) {
     echo'. $msgErreur.';
 }
 ?>
-*/
