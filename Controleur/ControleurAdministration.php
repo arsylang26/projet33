@@ -40,7 +40,7 @@ class ControleurAdministration extends ControleurSecurise
     public function affichAbusif()
     {
         $commentairesAbusifs = $this->commentaire->getCommentairesAbusifs();
-        $this->genererVue(['commentairesAbusifs' => $commentairesAbusifs]);
+        $this->genererVue(['commentairesAbusifs' => $commentairesAbusifs,"nbCommentairesAbusifs"=>count($commentairesAbusifs)]);
     }
 
     public function modifEpisode()

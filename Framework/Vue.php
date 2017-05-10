@@ -46,6 +46,7 @@ class Vue {
                 array('titre' => $this->titre, 'contenu' => $contenu,
                     'racineWeb' => $racineWeb));
         // Renvoi de la vue générée au navigateur
+        //session vider unset
         echo $vue;
     }
 

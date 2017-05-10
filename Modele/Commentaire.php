@@ -61,16 +61,9 @@ class Commentaire extends Modele
     {
         $sql = 'SELECT id, date_commentaire AS date, auteur, contenu, rang_commentaire AS rang, parent_commentaire AS parent FROM commentaires WHERE abusif >= 1';
         $commentairesAbusifs = $this->executerRequete($sql, array());
-        return $commentairesAbusifs;
+        return $commentairesAbusifs->fetchAll();
     }
 
-    public function getNbCommentairesAbusifs()
-    {
-        $sql='SELECT COUNT(*) FROM commentaire WHERE abusif>=1';
-        $res=$this->executerRequete($sql);
-        $nbCommentairesAbusifs=$res->fetch();
-        return $nbCommentairesAbusifs;
-    }
 
 // renvoie les enfants d'un commentaire  classés par niveau pour l'affichage (le parent du commentaire est le commentaire de rang immédiatement inférieur)
     public function getEnfantCommentaire($idParentCommentaire)

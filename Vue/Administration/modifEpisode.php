@@ -1,6 +1,6 @@
 <?php $this->titre="Alaska: Modification"; ?>
 <!--id=get, titre,contenu=post-->
-    <form class="col-lg-offset-1 col-lg-10" method="POST" action="administration/modifEpisode/.<?=$this->nettoyer($episode['id'])?>">
+    <form class="col-lg-offset-1 col-lg-10" method="POST" action="administration/modifEpisode/<?=$this->nettoyer($episode['id'])?>">
         <!--affichage du formulaire de saisie prérempli-->
         <div class ="form-group">
             <label for="titre">Titre de l'épisode :</label>
