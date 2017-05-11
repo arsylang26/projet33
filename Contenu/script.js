@@ -16,7 +16,7 @@ $(function() {
 });
 
 $('#tousAbusifs').click(function(){$(":checkbox").attr('checked',true)});
-
+$('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
 
 /*!
  * jquery.confirm
