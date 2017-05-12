@@ -40,26 +40,35 @@ class Commentaire extends Modele
     {
         $ids = implode(",",array_map('intval',$_POST['id_del']));
         $sql = 'SELECT COUNT(*) FROM commentaires WHERE id IN(' . $ids . ')';
-        $nbSuppr = $this->executerRequete($sql, array());
+
+        $nbSuppr = $this->executerRequete($sql)->fetch();
         $sql = 'SELECT COUNT(*) FROM commentaires WHERE abusif=1';
-        $nbTotalAbusif = $this->executerRequete($sql, array());
+        $nbTotalAbusif = $this->executerRequete($sql)->fetch();
         $sql = 'DELETE FROM commentaires WHERE id IN(' . $ids . ')';
         $this->executerRequete($sql, array($idCommentaire));
         $tab=array($nbSuppr,$nbTotalAbusif);
        return $tab;
     }
 
+    // rend  légitime un commentaire signalé abusif
+    public function validCommentaire($idCommentaire)
+    {
+        $ids= implode(",",array_map('intval',$_POST['id_ok']));
+        $sql='UPDATE commentaires SET abusif=0 WHERE id=?';
+        $this->executerRequete($sql,array($idCommentaire));
+    }
+
 // Signale un commentaire comme abusif
     public function signCommentaireAbusif($idCommentaire)
     {
-        $sql = 'UPDATE commentaires SET abusif=abusif+1 WHERE id=?';
+        $sql = 'UPDATE commentaires SET abusif=1 WHERE id=?';
         $this->executerRequete($sql, array($idCommentaire));
     }
 
 // renvoie les commentaires signalés comme abusifs
     public function getCommentairesAbusifs()
     {
-        $sql = 'SELECT id, date_commentaire AS date, auteur, contenu, rang_commentaire AS rang, parent_commentaire AS parent FROM commentaires WHERE abusif >= 1';
+        $sql = 'SELECT id, date_commentaire AS date, auteur, contenu, rang_commentaire AS rang, parent_commentaire AS parent FROM commentaires WHERE abusif = 1';
         $commentairesAbusifs = $this->executerRequete($sql, array());
         return $commentairesAbusifs->fetchAll();
     }
