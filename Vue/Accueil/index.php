@@ -52,6 +52,7 @@
 <?php
 for ($i=1;$i<=3;$i++){
     echo'<p>commentaire '.$i.'</p>';
+    // afficher les 3 derniers
 }
 ?>
 </aside>
