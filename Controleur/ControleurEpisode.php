@@ -49,6 +49,8 @@ class ControleurEpisode extends Controleur
             $this->erreur($e->getMessage());
         }
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
+        $this->msg->info("le commentaire a bien été ajouté",null,true);
+        $this->msg->display();
         $this->rediriger("episode" . $idEpisode);
     }
     
@@ -58,7 +60,8 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id_episode");
         $idCommentaire = $this->requete->getParametre("id");
         $this->commentaire->signCommentaireAbusif($idCommentaire);
-        //$this->message erreur, warning
+        $this->msg->success('le commentaire a bien été signalé comme abusif');
+        $this->msg->display();
         $this->rediriger("episode" . $idEpisode);
     }
 

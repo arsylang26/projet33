@@ -30,10 +30,6 @@ body {
     color: green;
 }
 
-h1 {
-    color: white;
-}
-
 .titreBillet {
     margin-bottom: 0px;
 }
@@ -42,7 +38,7 @@ h1 {
 
     min-height: 100%; /* 100% de la hauteur du view-port*/
     background: silver;
-    width: 75%;
+    width: 70%;
     margin: auto; /* Permet de centrer la div */
     text-align: justify;
     padding: 5px 20px;
@@ -86,4 +82,43 @@ footer, .bienvenue {
 /* affiche les boutons commentaire et abusif sur une même ligne */
 #bouton_commenter, #bouton_abusif {
     display: inline-block;
+}
+
+#photo_jf img {
+    margin: auto;
+    width: 50px;
+}
+
+aside p {
+    text-align: justified;
+}
+
+.aPropos {
+    width: 13%;
+    border:1px black solid;
+    border-radius: 10px;
+    box-shadow:6px 6px 6px #ffb20d;
+    background-color: darkgoldenrod;
+    position: fixed;
+    top: 10px;
+    right: 1%;
+    padding: 1% 1%;
+}
+.lastComments{
+    width: 13%;
+    border:1px black solid;
+    border-radius: 10px;
+    box-shadow:6px 6px 6px #73b3ff;
+    background-color: #95b85c;
+    position: fixed;
+    top: 10px;
+    left: 1%;
+    padding: 1% 1%;
+
+  }
+
+@media all and (max-width: 1024px) {
+    body aside {
+        display: none;
+    }
 }
