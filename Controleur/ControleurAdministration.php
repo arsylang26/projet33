@@ -2,6 +2,7 @@
 require_once 'ControleurSecurise.php';
 require_once 'Modele/Episode.php';
 require_once 'Modele/Commentaire.php';
+
 //require_once 'Controleur/ControleurEpisode.php';
 
 class ControleurAdministration extends ControleurSecurise
@@ -31,6 +32,7 @@ class ControleurAdministration extends ControleurSecurise
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
+           $this-> $msg->success("l'épisode a bien été créé");
             $this->rediriger("accueil");
 
         }
@@ -53,6 +55,8 @@ class ControleurAdministration extends ControleurSecurise
             $episode['titre'] = $titre;
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);
+            $msg->success("l'épisode a bien été modifié");
+            $msg->display();
             $this->rediriger("accueil");
         }
         $this->genererVue(array('episode' => $episode));
@@ -62,7 +66,7 @@ class ControleurAdministration extends ControleurSecurise
 
     {
         $id = $this->requete->getParametre("id");
-        $supprEpisode = $this->episode->delEpisode($id);
+      $this->episode->delEpisode($id);
         $this->rediriger("accueil");
     }
 

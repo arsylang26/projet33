@@ -1,6 +1,4 @@
-<?php $this->titre = "Mon Blog"; ?>
-<?php foreach ($episodes as $episode):
-    ?>
+<?php foreach ($episodes as $episode):?>
     <article>
         <header>
             <a href="<?= "episode/index/" . $this->nettoyer($episode['id']) ?>">
@@ -28,5 +26,33 @@
 
 
     </article>
+
     <hr/>
 <?php endforeach; ?>
+
+<aside class="aPropos">
+    <h1>A propos de l'auteur</h1>
+    <p id="photo_jf">
+        <img src="Contenu/images/photo_jf.jpg" alt="photo de Jean Forteroche">
+    </p>
+    <p>
+        Ma vocation d'écrivain est apparue tardivement après ma longue carrière cinématographique.
+    </p>
+    <p>
+        Incenderat autem audaces usque ad insaniam homines ad haec, quae nefariis egere conatibus,
+        Luscus quidam curator urbis subito visus: eosque ut heiulans baiolorum praecentor ad expediendum quod orsi sunt
+        incitans vocibus crebris. qui haut longe postea ideo vivus exustus est.
+    </p>
+    <p>
+        "Billet simple pour l'Alaska" sera mon ultime témoignage.
+    </p>
+</aside>
+<aside class="lastComments">
+    <h4>Trois derniers commentaires</h4>
+<?php
+for ($i=1;$i<=3;$i++){
+    echo'<p>commentaire '.$i.'</p>';
+    // afficher les 3 derniers
+}
+?>
+</aside>

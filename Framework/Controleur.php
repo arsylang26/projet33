@@ -1,7 +1,10 @@
 <?php
-
+require_once 'FlashMessages.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
+
+
+
 
 /**
  * Classe abstraite Controleur
@@ -11,15 +14,23 @@ require_once 'Vue.php';
  * @author Baptiste Pesquet
  */
 abstract class Controleur {
+//le message flash
+public $msg;
 
     /** Action à réaliser */
     private $action;
+
     
     /** Requête entrante
      * var Requete
      */
     protected $requete;
 
+    // constructeur des messages flash
+    public function __construct()
+    {
+        $this->msg=new \FlashMessages\FlashMessages();
+    }
     /**
      * Définit la requête entrante
      * 
