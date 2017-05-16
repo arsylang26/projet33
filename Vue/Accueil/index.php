@@ -21,8 +21,8 @@
                href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer l'épisode </a>
             <a class="btn btn-primary btn-sm" href="<?= "administration/modifEpisode/".$this->nettoyer($episode['id']) ?>">
                 modifier l'épisode</a>
-        <?php }
-        ?>
+       
+        <?php } ?>
 
 
     </article>
@@ -47,12 +47,17 @@
         "Billet simple pour l'Alaska" sera mon ultime témoignage.
     </p>
 </aside>
-<aside class="lastComments">
+<aside class="dernCommentaires">
     <h4>Trois derniers commentaires</h4>
 <?php
 for ($i=1;$i<=3;$i++){
     echo'<p>commentaire '.$i.'</p>';
     // afficher les 3 derniers
+    //$nb=3;
+   // $dernCommentaires=this->affichDernCommentaires($nb);
+    //foreach ($dernCommentaires as $commentaire){
+     //   echo '<p>'.$commentaire.'</p>';
+    //}
 }
 ?>
 </aside>

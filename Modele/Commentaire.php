@@ -81,12 +81,21 @@ class Commentaire extends Modele
         $enfantCommentaire = $this->executerRequete($sql, array($idParentCommentaire));
         return $enfantCommentaire;
     }
-
+//compte les commentaires
     public function getNbCommentaires()
     {
         $sql = 'SELECT COUNT(*) AS nbCommentaires FROM commentaire';
         $res = $this->executerRequete($sql);
         $ligne = $res->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbCommentaires'];
+    }
+    
+//retourne les derniers $nb commentaires
+    public function getDernCommentaires($nb)
+    {
+        $tot=$this->commentaire->getNbCommentaires();
+        $sql='SELECT contenu FROM commentaire LIMIT $nb OFFSET ($tot-$nb)';
+        $dernCommentaires=$this->executerRequete($sql);
+        return $dernCommentaires->fetchAll();
     }
 }

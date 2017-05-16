@@ -64,6 +64,13 @@ class ControleurEpisode extends Controleur
         $this->msg->display();
         $this->rediriger("episode" . $idEpisode);
     }
+    public function affichDernCommentaires()
+    {
+        $nb=$this->requete->getParametre("nb_commentaires");
+        $dernCommentaires=$this->commentaire->getDernCommentaires($nb);
+        //$this->genererVue
+        
+    }
 
     // gére les messages d'erreur
     public function erreur()

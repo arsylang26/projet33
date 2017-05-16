@@ -32,12 +32,12 @@
         <?php  if (isset($_SESSION['admin'])) : ?>
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-2 col-sm-offset-3">
-                        <a href="administration/creerEpisode" class="btn-sm btn-primary"> écrire un nouvel
+                    <div class="col-md-2 col-sm-offset-3">
+                        <a href="administration/creerEpisode" class="btn btn-sm btn-primary"> écrire un nouvel
                             épisode </a>
                     </div>
-                    <div class="col-sm-3 col-sm-offset-2">
-                        <a href="administration/affichAbusif" class="btn-sm btn-primary"> voir les commentaires
+                    <div class="col-md-3 col-sm-offset-2">
+                        <a href="administration/affichAbusif" class="btn btn-sm btn-primary"> voir les commentaires
                             abusifs </a>
                     </div>
                 </div>

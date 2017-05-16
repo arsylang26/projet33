@@ -35,8 +35,7 @@ if ($nbCommentairesAbusifs>0){ ?>
                     <button data-confirm="Êtes-vous sur de supprimer ces commentaires ?"
                             class="btn-xs btn-danger" type="submit">Supprimer les commentaires sélectionnés
                     </button>
-                    <button class="btn-xs btn-warning pull-right" type="button" id="tousAbusifs1">Tout selectionner</button>
-                </td>
+                        </td>
             </tr>
 
         </table>

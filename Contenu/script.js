@@ -15,7 +15,16 @@ $(function() {
     });
 });
 
-$('#tousAbusifs').click(function(){$(":checkbox").attr('checked',true)});
+$('#tousAbusifs').click(function(){
+    var abusifs=$("[name=id_del]").find(':checkbox');
+    if(this.checked){
+       abusifs.prop('checked',true);
+       }else{
+    abusifs.prop('checked',false);
+       }
+}
+                        });
+    
 $('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
 
 /*!

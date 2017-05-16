@@ -8,7 +8,7 @@ body {
     background-image: url("../Contenu/images/fond.jpg");
     background-size: cover;
 
-    /* font-family: 'Futura-Medium', 'Futura', 'Trebuchet MS', sans-serif;*/
+    
 }
 
 #contenu .tab_abusif:hover {
@@ -49,7 +49,7 @@ body {
 }
 
 footer, .bienvenue {
-    clear: both;
+    /*clear: both;*/
     text-align: center;
 }
 
@@ -104,7 +104,7 @@ aside p {
     right: 1%;
     padding: 1% 1%;
 }
-.lastComments{
+.dernCommentaires{
     width: 13%;
     border:1px black solid;
     border-radius: 10px;

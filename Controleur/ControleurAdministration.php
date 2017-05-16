@@ -32,7 +32,8 @@ class ControleurAdministration extends ControleurSecurise
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
-           $this-> $msg->success("l'épisode a bien été créé");
+            $this-> $msg->success("l'épisode a bien été créé");
+            $this->$msg->display();
             $this->rediriger("accueil");
 
         }
