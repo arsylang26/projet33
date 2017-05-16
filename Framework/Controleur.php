@@ -15,7 +15,7 @@ require_once 'Vue.php';
  */
 abstract class Controleur {
 //le message flash
-public $msg;
+private $flash;
 
     /** Action à réaliser */
     private $action;
@@ -27,10 +27,13 @@ public $msg;
     protected $requete;
 
     // constructeur des messages flash
-    public function __construct()
-    {
-        $this->msg=new \FlashMessages\FlashMessages();
+    public function getFlash(){
+        if (!$this->flash) {
+            $this->flash = new \FlashMessages\FlashMessages();
+        }
+        return ($this->flash);
     }
+
     /**
      * Définit la requête entrante
      * 
@@ -84,7 +87,7 @@ public $msg;
 
         // Instanciation et génération de la vue
         $vue = new Vue($actionVue, $controleurVue);
-        $vue->generer($donneesVue);
+        $vue->generer($donneesVue,$this->getFlash());
     }
 
     /**

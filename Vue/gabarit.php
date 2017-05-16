@@ -44,6 +44,9 @@
             </div>
         <?php endif; ?>
     </header>
+    <?php
+    $flash->display();
+    ?>
 <h2><?= $titre ?></h2>
     <div id="contenu">
         <?= $contenu ?>

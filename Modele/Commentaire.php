@@ -38,14 +38,14 @@ class Commentaire extends Modele
     // Suppression du commentaire et de ses enfants
     public function delCommentaire($idCommentaire)
     {
-        $ids = implode(",",array_map('intval',$_POST['id_del']));
+        $ids = implode(",",array_map('intval',$idCommentaire));
         $sql = 'SELECT COUNT(*) FROM commentaires WHERE id IN(' . $ids . ')';
 
         $nbSuppr = $this->executerRequete($sql)->fetch();
         $sql = 'SELECT COUNT(*) FROM commentaires WHERE abusif=1';
         $nbTotalAbusif = $this->executerRequete($sql)->fetch();
-        $sql = 'DELETE FROM commentaires WHERE id IN(' . $ids . ')';
-        $this->executerRequete($sql, array($idCommentaire));
+        $sql = 'DELETE FROM commentaires WHERE id IN(?)';
+        $this->executerRequete($sql, array($ids));
         $tab=array($nbSuppr,$nbTotalAbusif);
        return $tab;
     }
@@ -53,9 +53,9 @@ class Commentaire extends Modele
     // rend  légitime un commentaire signalé abusif
     public function validCommentaire($idCommentaire)
     {
-        $ids= implode(",",array_map('intval',$_POST['id_ok']));
-        $sql='UPDATE commentaires SET abusif=0 WHERE id=?';
-        $this->executerRequete($sql,array($idCommentaire));
+        $ids= implode(",",array_map('intval',$idCommentaire));
+        $sql='UPDATE commentaires SET abusif=0 WHERE id in(?)';
+        $this->executerRequete($sql,array($ids));
     }
 
 // Signale un commentaire comme abusif
@@ -84,7 +84,7 @@ class Commentaire extends Modele
 //compte les commentaires
     public function getNbCommentaires()
     {
-        $sql = 'SELECT COUNT(*) AS nbCommentaires FROM commentaire';
+        $sql = 'SELECT COUNT(*) AS nbCommentaires FROM commentaires';
         $res = $this->executerRequete($sql);
         $ligne = $res->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbCommentaires'];
@@ -93,9 +93,9 @@ class Commentaire extends Modele
 //retourne les derniers $nb commentaires
     public function getDernCommentaires($nb)
     {
-        $tot=$this->commentaire->getNbCommentaires();
-        $sql='SELECT contenu FROM commentaire LIMIT $nb OFFSET ($tot-$nb)';
-        $dernCommentaires=$this->executerRequete($sql);
+
+        $sql='SELECT contenu FROM commentaires ORDER BY id DESC LIMIT 3';
+        $dernCommentaires=$this->executerRequete($sql,array());
         return $dernCommentaires->fetchAll();
     }
 }

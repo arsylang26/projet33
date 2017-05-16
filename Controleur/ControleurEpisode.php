@@ -21,7 +21,7 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id");
         $episode = $this->episode->getEpisode($idEpisode);
         $commentaires = $this->commentaire->getCommentaires($idEpisode, 0);
-
+        //$this->getFlash()->display();
         $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire' => $this->commentaire));
 
     }
@@ -60,17 +60,11 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id_episode");
         $idCommentaire = $this->requete->getParametre("id");
         $this->commentaire->signCommentaireAbusif($idCommentaire);
-        $this->msg->success('le commentaire a bien été signalé comme abusif');
-        $this->msg->display();
+        $this->getFlash()->success('le commentaire a bien été signalé comme abusif');
+
         $this->rediriger("episode" . $idEpisode);
     }
-    public function affichDernCommentaires()
-    {
-        $nb=$this->requete->getParametre("nb_commentaires");
-        $dernCommentaires=$this->commentaire->getDernCommentaires($nb);
-        //$this->genererVue
-        
-    }
+
 
     // gére les messages d'erreur
     public function erreur()

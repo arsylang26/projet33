@@ -50,14 +50,13 @@
 <aside class="dernCommentaires">
     <h4>Trois derniers commentaires</h4>
 <?php
-for ($i=1;$i<=3;$i++){
-    echo'<p>commentaire '.$i.'</p>';
+
     // afficher les 3 derniers
     //$nb=3;
    // $dernCommentaires=this->affichDernCommentaires($nb);
-    //foreach ($dernCommentaires as $commentaire){
-     //   echo '<p>'.$commentaire.'</p>';
-    //}
-}
+    foreach ($dernCommentaires as $commentaire){
+      echo '<p>'.$commentaire['contenu'].'</p>';
+    }
+
 ?>
 </aside>

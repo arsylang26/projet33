@@ -72,13 +72,13 @@ class ControleurAdministration extends ControleurSecurise
 
     public function supprCommentaire()
     {
-        $ids = $this->requete->getParametre("id_del");
-        $idOk = $this->requete->getParametre("id_ok");
-        if (!empty($id)) {
+        $ids = $this->requete->getParametre("id_del",array());
+        $idsOk = $this->requete->getParametre("id_ok",array());
+        if (!empty($ids)) {
             $this->commentaire->delCommentaire($ids);
         }
-        if (!empty($idOk)) {
-            $this->commentaire->validCommentaire($ids);
+        if (!empty($idsOk)) {
+            $this->commentaire->validCommentaire($idsOk);
         }
         $this->rediriger("administration/affichAbusif");
     }

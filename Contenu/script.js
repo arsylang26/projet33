@@ -15,20 +15,24 @@ $(function () {
     });
 });
 //toggle de toutes les checkboxes portant le nom id_del
+var abusifs = $("[name='id_del[]']");
 $('#tousAbusifs').click(function () {
-    var abusifs = $("[name=id_del]").find(':checkbox');
+
     if (this.checked) {
         abusifs.prop('checked', true);
+        ok.prop('checked', false);
     } else {
         abusifs.prop('checked', false);
     }
 });
 
 //toggle de toutes les checkboxes portant le nom id_ok
+var ok =$("[name='id_ok[]']");
 $('#tousOk').click(function () {
-    var ok =$("[name=id_ok]").find(':checkbox');
+
     if (this.checked) {
         ok.prop('checked', true);
+        abusifs.prop('checked',false);
     } else {
         ok.prop('checked', false);
     }

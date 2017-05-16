@@ -34,7 +34,7 @@ class Vue {
      * 
      * @param array $donnees Données nécessaires à la génération de la vue
      */
-    public function generer($donnees) {
+    public function generer($donnees,$flash) {
         // Génération de la partie spécifique de la vue
         $contenu = $this->genererFichier($this->fichier, $donnees);
         // On définit une variable locale accessible par la vue pour la racine Web
@@ -42,9 +42,10 @@ class Vue {
         // Nécessaire pour les URI de type controleur/action/id
         $racineWeb = Configuration::get("racineWeb", "/");
         // Génération du gabarit commun utilisant la partie spécifique
+
         $vue = $this->genererFichier('Vue/gabarit.php',
                 array('titre' => $this->titre, 'contenu' => $contenu,
-                    'racineWeb' => $racineWeb));
+                    'racineWeb' => $racineWeb,'flash'=>$flash));
         // Renvoi de la vue générée au navigateur
         //session vider unset
         echo $vue;

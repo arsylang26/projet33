@@ -13,7 +13,7 @@ if ($nbCommentairesAbusifs>0){ ?>
                 <th>Auteur</th>
                 <th>Commentaire</th>
                 <th>A supprimer  <input type="checkbox" name="idDel" id="tousAbusifs" /></th>
-                <th>non-abusif   <input type="checkbox" name="idOk" id="tousValides" /></th>
+                <th>non-abusif   <input type="checkbox" name="idOk" id="tousOk" /></th>
             </tr>
             <!-- parcourir la liste des commentaires abusifs , les lister sous forme de tableau avec une case à cocher pour chaque commentaire
             en fin de tableau bouton supprimer avec confirmation pour supprimer la liste cochée -->
