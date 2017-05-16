@@ -1,31 +1,41 @@
 // confirmation de la suppression des commentaires sélectionnés
-$(function() {
-    $('button[data-confirm]').click(function(ev) {
-        form=$(this).parents('form');
+$(function () {
+    $('button[data-confirm]').click(function (ev) {
+        form = $(this).parents('form');
         if (!$('#dataConfirmModal').length) {
             $('body').append('<div id="dataConfirmModal" class="modal" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button><h3 id="dataConfirmLabel">Merci de confirmer</h3></div><div class="modal-body"></div><div class="modal-footer"><button class="btn" data-dismiss="modal" aria-hidden="true">Non</button><a class="btn btn-danger" id="dataConfirmOK">Oui</a></div></div></div></div>');
         }
         $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
-        $('#dataConfirmOK').click(function(e){
+        $('#dataConfirmOK').click(function (e) {
             form.submit();
         });
-        $('#dataConfirmModal').modal({show:true});
+        $('#dataConfirmModal').modal({show: true});
 
         return false;
     });
 });
+//toggle de toutes les checkboxes portant le nom id_del
+$('#tousAbusifs').click(function () {
+    var abusifs = $("[name=id_del]").find(':checkbox');
+    if (this.checked) {
+        abusifs.prop('checked', true);
+    } else {
+        abusifs.prop('checked', false);
+    }
+});
 
-$('#tousAbusifs').click(function(){
-    var abusifs=$("[name=id_del]").find(':checkbox');
-    if(this.checked){
-       abusifs.prop('checked',true);
-       }else{
-    abusifs.prop('checked',false);
-       }
-}
-                        });
-    
-$('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
+//toggle de toutes les checkboxes portant le nom id_ok
+$('#tousOk').click(function () {
+    var ok =$("[name=id_ok]").find(':checkbox');
+    if (this.checked) {
+        ok.prop('checked', true);
+    } else {
+        ok.prop('checked', false);
+    }
+});
+
+    /*$(":checkbox").attr('checked', true)*/
+
 
 /*!
  * jquery.confirm
@@ -92,10 +102,10 @@ $('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
                 'confirm-button-class': 'confirmButtonClass',
                 'cancel-button-class': 'cancelButtonClass',
                 'dialog-class': 'dialogClass',
-                'modal-options-backdrop':'modalOptionsBackdrop',
-                'modal-options-keyboard':'modalOptionsKeyboard'
+                'modal-options-backdrop': 'modalOptionsBackdrop',
+                'modal-options-keyboard': 'modalOptionsKeyboard'
             };
-            $.each(dataOptionsMapping, function(attributeName, optionName) {
+            $.each(dataOptionsMapping, function (attributeName, optionName) {
                 var value = options.button.data(attributeName);
                 if (typeof value != "undefined") {
                     dataOptions[optionName] = value;
@@ -135,7 +145,7 @@ $('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
             modalHeader =
                 '<div class="modal-header">' +
                 '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>' +
-                '<h4 class="modal-title">' + settings.title+'</h4>' +
+                '<h4 class="modal-title">' + settings.title + '</h4>' +
                 '</div>';
         }
         var cancelButtonHtml = '';
@@ -147,7 +157,7 @@ $('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
         }
         var modalHTML =
             '<div class="confirmation-modal modal fade" tabindex="-1" role="dialog">' +
-            '<div class="'+ settings.dialogClass +'">' +
+            '<div class="' + settings.dialogClass + '">' +
             '<div class="modal-content">' +
             modalHeader +
             '<div class="modal-body">' + settings.text + '</div>' +
@@ -164,7 +174,7 @@ $('#tousOk').click(function(){$(":checkbox").attr('checked',true)});
         var modal = $(modalHTML);
 
         // Apply modal options
-        if (typeof settings.modalOptionsBackdrop != "undefined" || typeof settings.modalOptionsKeyboard != "undefined") {
+        if (typeof settings.modalOptionsBackdrop != "undefined" || typeof settings.modalOptionsKeyboard != "undefined") {
             modal.modal({
                 backdrop: settings.modalOptionsBackdrop,
                 keyboard: settings.modalOptionsKeyboard

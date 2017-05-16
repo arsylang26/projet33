@@ -11,7 +11,6 @@ class ControleurAdministration extends ControleurSecurise
     private $commentaire;
 
 
-
     public function __construct()
     {
         $this->episode = new Episode();
@@ -32,7 +31,7 @@ class ControleurAdministration extends ControleurSecurise
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
-            $this-> $msg->success("l'épisode a bien été créé");
+            $this->$msg->success("l'épisode a bien été créé");
             $this->$msg->display();
             $this->rediriger("accueil");
 
@@ -43,7 +42,7 @@ class ControleurAdministration extends ControleurSecurise
     public function affichAbusif()
     {
         $commentairesAbusifs = $this->commentaire->getCommentairesAbusifs();
-        $this->genererVue(['commentairesAbusifs' => $commentairesAbusifs,"nbCommentairesAbusifs"=>count($commentairesAbusifs)]);
+        $this->genererVue(['commentairesAbusifs' => $commentairesAbusifs, "nbCommentairesAbusifs" => count($commentairesAbusifs)]);
     }
 
     public function modifEpisode()
@@ -56,8 +55,8 @@ class ControleurAdministration extends ControleurSecurise
             $episode['titre'] = $titre;
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);
-            $msg->success("l'épisode a bien été modifié");
-            $msg->display();
+            $this->$msg->success("l'épisode a bien été modifié");
+            $this->$msg->display();
             $this->rediriger("accueil");
         }
         $this->genererVue(array('episode' => $episode));
@@ -67,19 +66,22 @@ class ControleurAdministration extends ControleurSecurise
 
     {
         $id = $this->requete->getParametre("id");
-      $this->episode->delEpisode($id);
+        $this->episode->delEpisode($id);
         $this->rediriger("accueil");
     }
 
     public function supprCommentaire()
     {
         $ids = $this->requete->getParametre("id_del");
-        //$idsOK = $this->requete->getParametre("id_OK");
-        $this->commentaire->delCommentaire($ids);
+        $idOk = $this->requete->getParametre("id_ok");
+        if (!empty($id)) {
+            $this->commentaire->delCommentaire($ids);
+        }
+        if (!empty($idOk)) {
+            $this->commentaire->validCommentaire($ids);
+        }
         $this->rediriger("administration/affichAbusif");
     }
-
-
 
 
 }
