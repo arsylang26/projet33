@@ -29,25 +29,24 @@
             <a href="index.php"><h1>Billet simple pour l'Alaska</h1></a>
             <p>Bienvenue sur le livre en ligne de Jean Forteroche.</p>
         </div>
-        <?php  if (isset($_SESSION['admin'])) : ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 col-sm-offset-3">
-                        <a href="administration/creerEpisode" class="btn btn-sm btn-primary"> écrire un nouvel
-                            épisode </a>
-                    </div>
-                    <div class="col-md-3 col-sm-offset-2">
-                        <a href="administration/affichAbusif" class="btn btn-sm btn-primary"> voir les commentaires
-                            abusifs </a>
-                    </div>
-                </div>
+        <?php if (isset($_SESSION['admin'])) : ?>
+<div class="row">
+            <div class="col-md-2 col-sm-offset-3">
+                <a href="administration/creerEpisode" class="btn btn-sm btn-primary"> écrire un nouvel
+                    épisode </a>
             </div>
+            <div class="col-md-3 col-sm-offset-2">
+                <a href="administration/affichAbusif" class="btn btn-sm btn-primary"> voir les commentaires
+                    abusifs </a>
+            </div>
+</div>
+
         <?php endif; ?>
     </header>
     <?php
     $flash->display();
     ?>
-<h2><?= $titre ?></h2>
+    <h2><?= $titre ?></h2>
     <div id="contenu">
         <?= $contenu ?>
     </div>

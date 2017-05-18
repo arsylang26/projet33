@@ -31,8 +31,8 @@ class ControleurAdministration extends ControleurSecurise
         if ($titre && $contenu) {
 
             $this->episode->recEpisode($titre, $contenu);
-            $this->$msg->success("l'épisode a bien été créé");
-            $this->$msg->display();
+            $this->getFlash()->success('l\'épisode a bien été créé');
+
             $this->rediriger("accueil");
 
         }
@@ -55,8 +55,8 @@ class ControleurAdministration extends ControleurSecurise
             $episode['titre'] = $titre;
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);
-            $this->$msg->success("l'épisode a bien été modifié");
-            $this->$msg->display();
+            $this->getFlash()->success('l \'épisode a bien été modifié');
+
             $this->rediriger("accueil");
         }
         $this->genererVue(array('episode' => $episode));
@@ -67,6 +67,7 @@ class ControleurAdministration extends ControleurSecurise
     {
         $id = $this->requete->getParametre("id");
         $this->episode->delEpisode($id);
+        $this->getFlash()->info('épisode supprimé');
         $this->rediriger("accueil");
     }
 
@@ -80,6 +81,7 @@ class ControleurAdministration extends ControleurSecurise
         if (!empty($idsOk)) {
             $this->commentaire->validCommentaire($idsOk);
         }
+        $this->getFlash()->success('opération réussie');
         $this->rediriger("administration/affichAbusif");
     }
 

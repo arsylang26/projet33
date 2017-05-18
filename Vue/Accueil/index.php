@@ -1,4 +1,4 @@
-<?php foreach ($episodes as $episode):?>
+<?php foreach ($episodes as $episode): ?>
     <article>
         <header>
             <a href="<?= "episode/index/" . $this->nettoyer($episode['id']) ?>">
@@ -18,10 +18,11 @@
         </div>
         <?php if (isset($_SESSION['admin'])) { ?>
             <a type="button" class="confirm btn btn-warning btn-sm"
-               href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer l'épisode </a>
-            <a class="btn btn-primary btn-sm" href="<?= "administration/modifEpisode/".$this->nettoyer($episode['id']) ?>">
+               href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer
+                l'épisode </a>
+            <a class="btn btn-primary btn-sm"
+               href="<?= "administration/modifEpisode/" . $this->nettoyer($episode['id']) ?>">
                 modifier l'épisode</a>
-       
         <?php } ?>
 
 
@@ -48,15 +49,14 @@
     </p>
 </aside>
 <aside class="dernCommentaires">
-    <h4>Trois derniers commentaires</h4>
-<?php
+    <h4><strong>Trois derniers commentaires</strong></h4>
+    <ul class="list-group">
+    <?php
 
-    // afficher les 3 derniers
-    //$nb=3;
-   // $dernCommentaires=this->affichDernCommentaires($nb);
-    foreach ($dernCommentaires as $commentaire){
-      echo '<p>'.$commentaire['contenu'].'</p>';
+    foreach ($dernCommentaires as $commentaire) {
+        echo '<li class="list-group-item">" ' . $commentaire['contenu'] . ' "</li></br>';
     }
 
-?>
+    ?>
+    </ul>
 </aside>

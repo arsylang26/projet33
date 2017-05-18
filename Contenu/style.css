@@ -121,4 +121,17 @@ aside p {
     body aside {
         display: none;
     }
+
 }
+
+/*li {
+    font-family: Arial, sans-serif;
+    font-size: 100%;
+    color: black;
+    list-style-type: none;
+    background-image:  url("https://mdn.mozillademos.org/files/11981/starsolid.gif");
+    background-repeat: no-repeat;
+    background-position: 0 ;
+    padding-left: 30px;
+}
+*/

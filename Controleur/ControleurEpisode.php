@@ -49,8 +49,8 @@ class ControleurEpisode extends Controleur
             $this->erreur($e->getMessage());
         }
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-        $this->msg->info("le commentaire a bien été ajouté",null,true);
-        $this->msg->display();
+        $this->getFlash()->success('le commentaire a bien été ajouté',null,true);
+
         $this->rediriger("episode" . $idEpisode);
     }
     
@@ -69,7 +69,8 @@ class ControleurEpisode extends Controleur
     // gére les messages d'erreur
     public function erreur()
     {
-        $msgErreur = $this->requete->getParametre(); // à voir
+        $msgErreur = $this->requete->getParametre();
+        //$this->getFlash()->warning("grosse erreur");
         $this->genererVue(array('msgErreur' => $msgErreur));
     }
 
