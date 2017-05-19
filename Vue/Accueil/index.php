@@ -9,9 +9,7 @@
         <div class="episode_contenu">
             <?php
             $contenu = strip_tags($episode['contenu']); //supprime les balises html créés par TinyMCE
-var_dump($contenu);
-            if (strlen($contenu) > 400) {
-                
+            if (strlen($contenu) > 400) {               //troncature à 400 caractères pour l'affichage de l'aperçu
                 $contenu = substr($contenu,0,400) . "  ...";
             }
             echo $contenu;
@@ -25,10 +23,7 @@ var_dump($contenu);
                href="<?= "administration/modifEpisode/" . $this->nettoyer($episode['id']) ?>">
                 modifier l'épisode</a>
         <?php } ?>
-
-
     </article>
-
     <hr/>
 <?php endforeach; ?>
 
