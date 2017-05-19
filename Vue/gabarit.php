@@ -56,5 +56,5 @@
 <script src="Contenu/TinyMCE/js/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({selector: 'textarea.tiny', language: 'fr_FR'});</script>
 <script src="Contenu/script.js"></script>
-
+    </body>
 </html>

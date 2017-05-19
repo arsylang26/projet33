@@ -9,9 +9,10 @@
         <div class="episode_contenu">
             <?php
             $contenu = strip_tags($episode['contenu']); //supprime les balises html créés par TinyMCE
-
-            if (strlen($contenu) > 250) {
-                $contenu = $contenu . "  ...";
+var_dump($contenu);
+            if (strlen($contenu) > 400) {
+                
+                $contenu = substr($contenu,0,400) . "  ...";
             }
             echo $contenu;
             ?>

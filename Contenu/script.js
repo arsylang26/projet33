@@ -16,15 +16,32 @@ $(function () {
 });
 //toggle de toutes les checkboxes portant le nom id_del
 var abusifs = $("[name='id_del[]']");
+
 $('#tousAbusifs').click(function () {
 
     if (this.checked) {
         abusifs.prop('checked', true);
         ok.prop('checked', false);
+        $('#tousOk').prop('checked',false);
     } else {
         abusifs.prop('checked', false);
     }
 });
+//toggle des checkboxes id_del et id_ok en fonction de leur rang (l'action de cocher l'une décoche l'autre)
+//var idOk=$("idOk");-->le name id_ok[id]
+//var idDel=$("idDel");
+//$('idOk').click(function(){
+ //   if (this.checked){
+ //       idDel.prop('checked',false);
+        
+ //   }
+//});
+//$('idDel').click(function(){
+//    if(this.checked){
+//        idOk.prop('checked',false);
+//    }
+//});
+
 
 //toggle de toutes les checkboxes portant le nom id_ok
 var ok =$("[name='id_ok[]']");
@@ -33,6 +50,7 @@ $('#tousOk').click(function () {
     if (this.checked) {
         ok.prop('checked', true);
         abusifs.prop('checked',false);
+        $('#tousAbusifs').prop('checked',false);
     } else {
         ok.prop('checked', false);
     }

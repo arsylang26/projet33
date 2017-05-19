@@ -5,16 +5,17 @@ class Episode extends Modele
 // Renvoie la liste de l'ensemble des épisodes
     public function getEpisodes()
     {
-        $sql = 'select id, DATE_FORMAT(date_episode,\'le %d/%m/%Y à %Hh%i\') as date, titre, SUBSTRING(contenu,1,250) AS contenu from episodes order by id desc';// 250 premiers caracteres de contenu
+        $sql = 'SELECT id, DATE_FORMAT(date_episode,\'le %d/%m/%Y à %Hh%i\') AS date, titre, contenu FROM episodes ORDER BY id DESC';
         $episodes = $this->executerRequete($sql);
         return $episodes;
     }
+    
 // CRUD
     
 // Renvoie les informations sur un épisode
     public function getEpisode($idEpisode)
     {
-        $sql = 'select id, DATE_FORMAT(date_episode,\'le %d/%m/%Y à %Hh%i\') as date, titre, contenu from episodes  where id=?';
+        $sql = 'SELECT id, DATE_FORMAT(date_episode,\'le %d/%m/%Y à %Hh%i\') AS date, titre, contenu FROM episodes  WHERE id=?';
         $episode = $this->executerRequete($sql, array($idEpisode));
         if ($episode->rowCount() == 1)
         {
@@ -29,7 +30,7 @@ class Episode extends Modele
 // Enregistre un épisode
     public function recEpisode($titre, $contenu)
    {
-        $sql = 'insert into episodes(date_episode,titre, contenu) values(?, ?, ?)';
+        $sql = 'INSERT INTO episodes(date_episode,titre, contenu) VALUES(?, ?, ?)';
         $date =  date("Y-m-d H:i:s");  // Récupère la date courante
         $this->executerRequete($sql, array($date, $titre, $contenu));
     }

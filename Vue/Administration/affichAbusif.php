@@ -20,10 +20,10 @@ if ($nbCommentairesAbusifs>0){ ?>
 
             <?php foreach ($commentairesAbusifs as $abusif):
 
-                echo '<tr> 
+                echo '<tr class="tab_abusif"> 
           <td>' . $this->nettoyer($abusif['date']) . '</td>
           <td>' . $this->nettoyer($abusif['auteur']) . '</td>
-          <td>' . $this->nettoyer($abusif['contenu']) . '</td>
+          <td>' . $this->nettoyer(substr($abusif['contenu'],0,150)) . '</td>
           <td><input type="checkbox" name="id_del[]" value="' . $abusif['id'] . '" /></td>
           <td><input type="checkbox" name="id_ok[]" value="' . $abusif['id'] . '" /></td>
           </tr>';
@@ -33,7 +33,7 @@ if ($nbCommentairesAbusifs>0){ ?>
                 <td colspan="5">
                     <!--data-confirm est une fontion jquery pour la confirmation d'une action-->
                     <button data-confirm="Êtes-vous sur de supprimer ces commentaires ?"
-                            class="btn-xs btn-danger" type="submit">Supprimer les commentaires sélectionnés
+                            class="btn-xs btn-danger center-block" type="submit">valider les choix
                     </button>
                         </td>
             </tr>
@@ -43,6 +43,6 @@ if ($nbCommentairesAbusifs>0){ ?>
 
 </section>
 <?php } else {
-    echo '<p>Aucun commentaire signalé comme abusif</p>';
-
+   // echo '<p>Aucun commentaire signalé comme abusif</p>';
+$this->getFlash()->info('aucun commentaire signalé abusif');
 }?>
