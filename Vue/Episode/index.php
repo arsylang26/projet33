@@ -14,12 +14,11 @@
                 <p>votre commentaire:</p>
             </div>
             <div class="form-group">
-                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" maxlength="10"
+                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" pattern=".{2,15}"
                        autofocus required/>
             </div>
             <div class="form-group">
-                        <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire"
-                                  maxlength="140" required></textarea>
+                        <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" required></textarea>
             </div>
             <input type="hidden" name="id" value="<?= $this->nettoyer($episode['id']) ?>"/>
             <button class="btn-xs btn-success" type="submit">Envoyer</button>

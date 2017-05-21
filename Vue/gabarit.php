@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <base href="<?= $racineWeb ?>">
@@ -30,31 +30,32 @@
             <p>Bienvenue sur le livre en ligne de Jean Forteroche.</p>
         </div>
         <?php if (isset($_SESSION['admin'])) : ?>
-<div class="row">
-            <div class="col-md-2 col-sm-offset-3">
-                <a href="administration/creerEpisode" class="btn btn-sm btn-primary"> écrire un nouvel
-                    épisode </a>
+            <div class="row">
+                <div class="col-md-2 col-sm-offset-3">
+                    <a href="administration/creerEpisode" class="btn btn-sm btn-primary"> écrire un nouvel
+                        épisode </a>
+                </div>
+                <div class="col-md-3 col-sm-offset-2">
+                    <a href="administration/affichAbusif" class="btn btn-sm btn-primary"> voir les commentaires
+                        abusifs </a>
+                </div>
             </div>
-            <div class="col-md-3 col-sm-offset-2">
-                <a href="administration/affichAbusif" class="btn btn-sm btn-primary"> voir les commentaires
-                    abusifs </a>
-            </div>
-</div>
 
         <?php endif; ?>
     </header>
-    <?php
-    $flash->display();
-    ?>
+    <div class="flash">
+        <?php $flash->display(); ?>
+    </div>
     <h2><?= $titre ?></h2>
     <div id="contenu">
         <?= $contenu ?>
     </div>
 </div> <!--global-->
 <script src="Contenu/jquery.js"></script>
+<script src="Contenu/jquery.validate.min.js"></script>
 <script src="Contenu/bootstrap/js/bootstrap.js"></script>
 <script src="Contenu/TinyMCE/js/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({selector: 'textarea.tiny', language: 'fr_FR'});</script>
 <script src="Contenu/script.js"></script>
-    </body>
+</body>
 </html>

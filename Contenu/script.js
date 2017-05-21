@@ -22,7 +22,7 @@ $('#tousAbusifs').click(function () {
     if (this.checked) {
         abusifs.prop('checked', true);
         ok.prop('checked', false);
-        $('#tousOk').prop('checked',false);
+        $('#tousOk').prop('checked', false);
     } else {
         abusifs.prop('checked', false);
     }
@@ -31,10 +31,10 @@ $('#tousAbusifs').click(function () {
 //var idOk=$("idOk");-->le name id_ok[id]
 //var idDel=$("idDel");
 //$('idOk').click(function(){
- //   if (this.checked){
- //       idDel.prop('checked',false);
-        
- //   }
+//   if (this.checked){
+//       idDel.prop('checked',false);
+
+//   }
 //});
 //$('idDel').click(function(){
 //    if(this.checked){
@@ -44,19 +44,34 @@ $('#tousAbusifs').click(function () {
 
 
 //toggle de toutes les checkboxes portant le nom id_ok
-var ok =$("[name='id_ok[]']");
+var ok = $("[name='id_ok[]']");
 $('#tousOk').click(function () {
 
     if (this.checked) {
         ok.prop('checked', true);
-        abusifs.prop('checked',false);
-        $('#tousAbusifs').prop('checked',false);
+        abusifs.prop('checked', false);
+        $('#tousAbusifs').prop('checked', false);
     } else {
         ok.prop('checked', false);
     }
 });
+//validation de la saisie des commentaires (champs textarea)
+$("#commentaire_form_episode").validate({
+    rules: {
+        "contenu": {
+            "required": true,
+            "minlength": 10,
+            "maxlength": 140
+        }
+    }
+});
 
-    /*$(":checkbox").attr('checked', true)*/
+
+//temporisation du message flash
+
+$(".flash").delay(4000).fadeOut(1000, 'swing');
+
+/*$(":checkbox").attr('checked', true)*/
 
 
 /*!

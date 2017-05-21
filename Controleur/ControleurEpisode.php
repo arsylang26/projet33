@@ -70,7 +70,7 @@ class ControleurEpisode extends Controleur
     public function erreur()
     {
         $msgErreur = $this->requete->getParametre();
-        //$this->getFlash()->warning("grosse erreur");
+        $this->getFlash()->warning("grosse erreur");
         $this->genererVue(array('msgErreur' => $msgErreur));
     }
 

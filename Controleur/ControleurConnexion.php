@@ -40,8 +40,9 @@ class ControleurConnexion extends Controleur
 
     public function deconnecter()
     {
+        $this->getFlash()->success('vous avez bien été déconnecté');
         $this->requete->getSession()->detruire();
-        $this->getFlash()->success("vous avez bien été déconnecté");
+
         $this->rediriger("accueil");
     }
 }
