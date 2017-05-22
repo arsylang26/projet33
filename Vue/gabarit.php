@@ -52,7 +52,6 @@
     </div>
 </div> <!--global-->
 <script src="Contenu/jquery.js"></script>
-<script src="Contenu/jquery.validate.min.js"></script>
 <script src="Contenu/bootstrap/js/bootstrap.js"></script>
 <script src="Contenu/TinyMCE/js/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({selector: 'textarea.tiny', language: 'fr_FR'});</script>

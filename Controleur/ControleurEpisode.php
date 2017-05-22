@@ -44,12 +44,12 @@ class ControleurEpisode extends Controleur
                     if ($parent && $parent['rang'] < 3) {     // s'il existe, on définit le rang du commentaire comme futur parent
                         $rangCommentaire = $parent['rang'] + 1;
                     } else {
-                        throw new exception ("erreur dans le rang du commentaire");
+                        throw new Exception("erreur dans le rang du commentaire");
                     }
                 }
             }
             else {
-                throw new execption ("erreur de saisie");
+                throw new Exception("erreur de saisie");
             }
         
     
@@ -79,7 +79,7 @@ public function signalerAbusif()
 public function erreur()
 {
     $msgErreur = $this->requete->getParametre();
-    $this->getFlash()->warning("grosse erreur");
+    $this->getFlash()->warning('grosse erreur');
     $this->genererVue(array('msgErreur' => $msgErreur));
 }
 

@@ -71,7 +71,7 @@ $("#commentaire_form_episode").validate({
 
 $(".flash").delay(4000).fadeOut(1000, 'swing');
 
-/*$(":checkbox").attr('checked', true)*/
+
 
 
 /*!
