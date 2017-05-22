@@ -11,15 +11,17 @@
     <div class="commentaire_form collapse" id="commentaire_form_episode">
         <form method="post" action="episode/commenter">
             <div class="form-group">
-                <p>votre commentaire:</p>
+                <legend>votre commentaire:</legend>
             </div>
             <div class="form-group">
-                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" pattern=".{2,15}"
+                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" minlength="3" maxlength="15"
                        autofocus required/>
             </div>
             <div class="form-group">
-                        <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" required></textarea>
+                        <textarea id="txtCommentaire" name="contenu" rows="4"  minlength="10" maxlength="140" placeholder="Votre commentaire" required></textarea>
+                 <p>maximum 140 caractères</p>
             </div>
+           
             <input type="hidden" name="id" value="<?= $this->nettoyer($episode['id']) ?>"/>
             <button class="btn-xs btn-success" type="submit">Envoyer</button>
             <button class="btn-xs btn-warning" type="reset">Annuler</button>

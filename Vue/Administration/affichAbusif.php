@@ -43,6 +43,6 @@ if ($nbCommentairesAbusifs>0){ ?>
 
 </section>
 <?php } else {
-   // echo '<p>Aucun commentaire signalé comme abusif</p>';
-$this->getFlash()->info('aucun commentaire signalé abusif');
+echo '<p>Aucun commentaire signalé comme abusif</p>';
+
 }?>

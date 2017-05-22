@@ -25,7 +25,7 @@ class ControleurEpisode extends Controleur
         $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire' => $this->commentaire));
 
     }
-    
+
     // Commenter un épisode ou un commentaire
     public function commenter()
     {
@@ -33,48 +33,56 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id");
         $contenu = $this->requete->getParametre("contenu");
         $parentCommentaire = $this->requete->getParametre("parent",null);
+
         try {
-            if (!$parentCommentaire) { //s'il était null alors
-                $rangCommentaire = 0; // c'est le commentaire de l'épisode
-            } else {                  // sinon c'est un commentaire de commentaire
-                $parent = $this->commentaire->getCommentaire($parentCommentaire)->fetch(); //on va chercher le parent
-                if ($parent && $parent['rang'] < 3) {     // s'il existe, on définit le rang du commentaire comme futur parent
-                    $rangCommentaire = $parent['rang'] + 1;
-                } else {
-                    throw new exception ("erreur dans le rang du commentaire");
+            //vérification de la longueur des champs
+            if (strlen($auteur)>=3 && strlen($auteur)<=15 && strlen($contenu)>=10 && strlen($contenu)<=140){  
+                if (!$parentCommentaire) { //s'il était null alors
+                    $rangCommentaire = 0; // c'est le commentaire de l'épisode
+                } else {                  // sinon c'est un commentaire de commentaire
+                    $parent = $this->commentaire->getCommentaire($parentCommentaire)->fetch(); //on va chercher le parent
+                    if ($parent && $parent['rang'] < 3) {     // s'il existe, on définit le rang du commentaire comme futur parent
+                        $rangCommentaire = $parent['rang'] + 1;
+                    } else {
+                        throw new exception ("erreur dans le rang du commentaire");
+                    }
                 }
             }
-        } catch
-        (Exception $e) {
-            $this->erreur($e->getMessage());
-        }
-        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-        $this->getFlash()->success('le commentaire a bien été ajouté',null,true);
-
-        $this->rediriger("episode" . $idEpisode);
-    }
+            else {
+                throw new execption ("erreur de saisie");
+            }
+        
     
-    // marquer comme abusif un commentaire
-    public function signalerAbusif()
-    {
-        $idEpisode = $this->requete->getParametre("id_episode");
-        $idCommentaire = $this->requete->getParametre("id");
-        $this->commentaire->signCommentaireAbusif($idCommentaire);
-        $this->getFlash()->success('le commentaire a bien été signalé comme abusif');
-
-        $this->rediriger("episode" . $idEpisode);
-    }
-
-
-    // gére les messages d'erreur
-    public function erreur()
-    {
-        $msgErreur = $this->requete->getParametre();
-        $this->getFlash()->warning("grosse erreur");
-        $this->genererVue(array('msgErreur' => $msgErreur));
-    }
-
-    
-  
+} catch
+    (Exception $e) {
+    $this->erreur($e->getMessage());
 }
-    
+$this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
+$this->getFlash()->success('le commentaire a bien été ajouté',null,true);
+
+$this->rediriger("episode" . $idEpisode);
+}
+
+// marquer comme abusif un commentaire
+public function signalerAbusif()
+{
+    $idEpisode = $this->requete->getParametre("id_episode");
+    $idCommentaire = $this->requete->getParametre("id");
+    $this->commentaire->signCommentaireAbusif($idCommentaire);
+    $this->getFlash()->success('le commentaire a bien été signalé comme abusif',null,true);
+
+    $this->rediriger("episode" . $idEpisode);
+}
+
+
+// gére les messages d'erreur
+public function erreur()
+{
+    $msgErreur = $this->requete->getParametre();
+    $this->getFlash()->warning("grosse erreur");
+    $this->genererVue(array('msgErreur' => $msgErreur));
+}
+
+
+
+}
