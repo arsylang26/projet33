@@ -13,7 +13,7 @@ class Commentaire extends Modele
             $params[]=$rang;
         }
         $commentaires = $this->executerRequete($sql, $params);
-        return $commentaires;
+        return $commentaires->fetchAll();
     }
     
  // renvoie le commentaire demandé
@@ -38,24 +38,21 @@ class Commentaire extends Modele
     // Suppression du commentaire et de ses enfants
     public function delCommentaire($idCommentaire)
     {
-        $ids = implode(",",array_map('intval',$idCommentaire));
-        $sql = 'SELECT COUNT(*) FROM commentaires WHERE id IN(' . $ids . ')';
+        $qMarks = str_repeat('?,', count($idCommentaire) - 1) . '?';
+        $sql = 'DELETE FROM commentaires WHERE id IN('.$qMarks.')';
 
-        $nbSuppr = $this->executerRequete($sql)->fetch();
-        $sql = 'SELECT COUNT(*) FROM commentaires WHERE abusif=1';
-        $nbTotalAbusif = $this->executerRequete($sql)->fetch();
-        $sql = 'DELETE FROM commentaires WHERE id IN(?)';
-        $this->executerRequete($sql, array($ids));
-        $tab=array($nbSuppr,$nbTotalAbusif);
-       return $tab;
+        //die($sql);
+        $this->executerRequete($sql, $idCommentaire);
+        //$tab=array($nbSuppr,$nbTotalAbusif);
+      // return $tab;
     }
 
     // rend  légitime un commentaire signalé abusif
     public function validCommentaire($idCommentaire)
     {
-        $ids= implode(",",array_map('intval',$idCommentaire));
-        $sql='UPDATE commentaires SET abusif=0 WHERE id in(?)';
-        $this->executerRequete($sql,array($ids));
+        $qMarks = str_repeat('?,', count($idCommentaire) - 1) . '?';
+        $sql='UPDATE commentaires SET abusif=0 WHERE id in('.$qMarks.')';
+        $this->executerRequete($sql,$idCommentaire);
     }
 
 // Signale un commentaire comme abusif

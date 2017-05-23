@@ -1,5 +1,5 @@
 <?php
-
+require_once 'FlashMessages.php';
 require_once 'Controleur.php';
 require_once 'Requete.php';
 require_once 'Vue.php';
@@ -89,7 +89,8 @@ class Routeur {
      */
     private function gererErreur(Exception $exception) {
         $vue = new Vue('erreur');
-        $vue->generer(array('msgErreur' => $exception->getMessage()));
+        $flash=new FlashMessages\FlashMessages();
+        $vue->generer(array('msgErreur' => $exception->getMessage()),$flash);
     }
 
 }
