@@ -1,4 +1,4 @@
-<?php $this->titre = "Alaska - " .$this->nettoyer($episode['titre']); ?>
+<?php $this->titre = "épisode \"" .$this->nettoyer($episode['titre']). "\""; ?>
 <article>
     <header>
         <h1 class="episode_titre"><?= $this->nettoyer($episode['titre']) ?></h1>
@@ -18,10 +18,10 @@
                        autofocus required/>
             </div>
             <div class="form-group">
-                        <textarea id="txtCommentaire" name="contenu" rows="4"  minlength="10" maxlength="140" placeholder="Votre commentaire" required></textarea>
-                 <p>maximum 140 caractères</p>
+                <textarea id="txtCommentaire" name="contenu" rows="4"  minlength="10" maxlength="140" placeholder="Votre commentaire" required></textarea>
+                <p>maximum 140 caractères</p>
             </div>
-           
+
             <input type="hidden" name="id" value="<?= $this->nettoyer($episode['id']) ?>"/>
             <button class="btn-xs btn-success" type="submit">Envoyer</button>
             <button class="btn-xs btn-warning" type="reset">Annuler</button>
@@ -31,13 +31,16 @@
 <hr/>
 <header>
     <?php
-    if ($commentaires->fetch()) {
-        echo '<h1 id="titreReponses">Réponses à : ' . $this->nettoyer($episode['titre']) . '</h1>';
-    }else {echo'Cet épisode n\'a encore aucun commentaire';}
+    var_dump($commentaires->fetch());
+            if ($commentaires->fetch()) {
+                echo '<h1 id="titreReponses">Réponses à : ' . $this->nettoyer($episode['titre']) . '</h1>';
+            }else {
+                echo'Cet épisode n\'a encore aucun commentaire';
+            }
     ?>
 </header>
 <article>
     <div class="container">
-     <?php include '_dispLigneeCommentaire.php'?>
+        <?php include '_dispLigneeCommentaire.php'?>
     </div>
 </article>

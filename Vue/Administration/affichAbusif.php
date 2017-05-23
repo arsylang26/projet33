@@ -1,4 +1,4 @@
-<?php $this->titre = "Alaska: gestion des commentaires abusifs" ?>
+<?php $this->titre = "gestion des commentaires abusifs" ?>
 
 <?php
 if ($nbCommentairesAbusifs>0){ ?>

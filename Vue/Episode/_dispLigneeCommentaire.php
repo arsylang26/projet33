@@ -26,12 +26,10 @@ foreach ($commentaires as $lignee) { ?>
                 <legend>votre commentaire:</legend>
             </div>
             <div class="form-group">
-                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" maxlength="10"
-                       autofocus required/>
+                <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" minlength="3" maxlength="10" autofocus required/>
             </div>
             <div class="form-group">
-                                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire"
-                                          maxlength="140" required></textarea>
+                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" minlength="10" maxlength="140" required></textarea>
             </div>
             <input type="hidden" name="id_episode" value="<?= $episode['id'] ?>"/>
             <input type="hidden" name="parent" value="<?= $lignee['id'] ?> "/>
@@ -44,7 +42,7 @@ foreach ($commentaires as $lignee) { ?>
         <?php
         $commentaires=$modeleCommentaire->getEnfantCommentaire($lignee['id']);
         include '_dispLigneeCommentaire.php';
-        //dispLigneeCommentaire($episode, $modele->getEnfantCommentaire($lignee['id']), $modele); ?>
+        ?>
     </div>
 </div>
 <?php } ?>

@@ -1,4 +1,4 @@
-<?php $this->titre="Alaska: Modification"; ?>
+<?php $this->titre="Modification"; ?>
 <!--id=get, titre,contenu=post-->
     <form class="col-lg-offset-1 col-lg-10" method="POST" action="administration/modifEpisode/<?=$this->nettoyer($episode['id'])?>">
         <!--affichage du formulaire de saisie prérempli-->

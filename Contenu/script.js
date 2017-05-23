@@ -55,21 +55,11 @@ $('#tousOk').click(function () {
         ok.prop('checked', false);
     }
 });
-//validation de la saisie des commentaires (champs textarea)
-$("#commentaire_form_episode").validate({
-    rules: {
-        "contenu": {
-            "required": true,
-            "minlength": 10,
-            "maxlength": 140
-        }
-    }
-});
 
 
 //temporisation du message flash
 
-$(".flash").delay(4000).fadeOut(1000, 'swing');
+$('.flash').delay(4000).fadeOut(1000, 'swing');
 
 
 

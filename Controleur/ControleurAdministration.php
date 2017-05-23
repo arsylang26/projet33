@@ -29,12 +29,13 @@ class ControleurAdministration extends ControleurSecurise
         $titre = $this->requete->getParametre("titre", null);
         $contenu = $this->requete->getParametre("contenu", null);
         if ($titre && $contenu) {
-
-            $this->episode->recEpisode($titre, $contenu);
-            $this->getFlash()->success('l\'épisode a bien été créé');
-
+            if (strlen($contenu)>15){
+                $this->episode->recEpisode($titre, $contenu);
+                $this->getFlash()->success('l\'épisode a bien été créé');
+            }else{
+                $this->getFlash()->warning('15 caractères minimum !');
+            }
             $this->rediriger("accueil");
-
         }
         $this->genererVue(array());
     }
@@ -51,7 +52,7 @@ class ControleurAdministration extends ControleurSecurise
         $titre = $this->requete->getParametre("titre", null);
         $contenu = $this->requete->getParametre("contenu", null);
         $episode = $this->episode->getEpisode($id);
-        if ($id && $titre && $contenu) {
+        if ($id && $titre && $contenu && strlen($contenu)>15) {
             $episode['titre'] = $titre;
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);

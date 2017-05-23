@@ -1,5 +1,5 @@
 <?php
-$this->titre="Alaska - Connexion";
+$this->titre="Connexion espace administration";
 ?>
 <div class="admin col-lg-4 col-lg-offset-4">
 
