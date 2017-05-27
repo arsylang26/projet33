@@ -40,11 +40,8 @@ class Commentaire extends Modele
     {
         $qMarks = str_repeat('?,', count($idCommentaire) - 1) . '?';
         $sql = 'DELETE FROM commentaires WHERE id IN('.$qMarks.')';
-
-        //die($sql);
         $this->executerRequete($sql, $idCommentaire);
-        //$tab=array($nbSuppr,$nbTotalAbusif);
-      // return $tab;
+
     }
 
     // rend  légitime un commentaire signalé abusif
@@ -78,6 +75,7 @@ class Commentaire extends Modele
         $enfantCommentaire = $this->executerRequete($sql, array($idParentCommentaire));
         return $enfantCommentaire;
     }
+
 //compte les commentaires
     public function getNbCommentaires()
     {
@@ -91,7 +89,7 @@ class Commentaire extends Modele
     public function getDernCommentaires($nb)
     {
 
-        $sql='SELECT contenu FROM commentaires ORDER BY id DESC LIMIT 3';
+        $sql='SELECT contenu FROM commentaires ORDER BY id DESC LIMIT '.$nb.'';
         $dernCommentaires=$this->executerRequete($sql,array());
         return $dernCommentaires->fetchAll();
     }

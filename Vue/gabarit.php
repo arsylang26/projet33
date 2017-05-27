@@ -4,7 +4,7 @@
         <meta charset="UTF-8"/>
         <base href="<?= $racineWeb ?>">
         <link rel="stylesheet" href="Contenu/style.css"/>
-        <link href="https://fonts.googleapis.com/css?family=Jim+Nightshade" rel="stylesheet">
+        <<link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway|Courgette|Merienda" rel="stylesheet">
         <link href="Contenu/bootstrap/css/bootstrap.css" rel="stylesheet">
         <title><?= $titre ?></title>
     </head>

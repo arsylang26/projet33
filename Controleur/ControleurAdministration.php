@@ -15,8 +15,6 @@ class ControleurAdministration extends ControleurSecurise
     {
         $this->episode = new Episode();
         $this->commentaire = new Commentaire();
-
-
     }
 
     public function index()
@@ -57,7 +55,6 @@ class ControleurAdministration extends ControleurSecurise
             $episode['contenu'] = $contenu;
             $this->episode->modEpisode($episode);
             $this->getFlash()->success('l \'épisode a bien été modifié');
-
             $this->rediriger("accueil");
         }
         $this->genererVue(array('episode' => $episode));
@@ -77,11 +74,11 @@ class ControleurAdministration extends ControleurSecurise
 
         $ids = $this->requete->getParametre("id_del",array());
         $idsOk = $this->requete->getParametre("id_ok",array());
-        var_dump($ids);
+
         if (!empty($ids)) {
             $this->commentaire->delCommentaire($ids);
         }
-        var_dump($idsOk);
+
         if (!empty($idsOk)) {
             $this->commentaire->validCommentaire($idsOk);
         }
@@ -89,6 +86,4 @@ class ControleurAdministration extends ControleurSecurise
         $this->getFlash()->success('opération réussie',null,true);
         $this->rediriger("administration/affichAbusif");
     }
-
-
 }

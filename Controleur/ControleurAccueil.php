@@ -14,7 +14,7 @@ class ControleurAccueil extends Controleur
         $this->commentaire = new Commentaire();
     }
 
-// Affiche la liste de tous les épisodes du blog
+// Affiche la liste de tous les épisodes du blog ainsi que les 3 derniers commentaires publiés
     public function index()
     {
         $episodes = $this->episode->getEpisodes();

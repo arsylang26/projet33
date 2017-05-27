@@ -4,38 +4,56 @@ html, body {
 }
 
 body {
-
-    background-image: url("../Contenu/images/fond.jpg");
+    position: relative;
+    background-image: url("../Contenu/images/alaska2.jpg");
     background-size: cover;
-
-
+    background-attachment: fixed;
+    z-index: 0;
 }
 
 #contenu .tab_abusif:hover {
     background-color: greenyellow;
 }
 
-.episode_contenu, .commentaire_contenu {
-    font-family: 'Jim Nightshade', cursive;
+.episode_contenu {
+    font-family: 'Raleway', sans-serif;
     border: 1px blue solid;
     background-color: white;
-    padding: 10px;
+    padding: 15px;
     font-size: 1.5em;
     margin-bottom: 10px; /* espace le bouton commenter */
     word-wrap: break-word;
 }
 
+.commentaire_contenu {
+    font-family: 'Indie Flower', cursive;;
+    border: 1px limegreen solid;
+    background-color: navajowhite;
+    padding: 10px;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+#global hr {
+    border: 0;
+    height: 2px;
+    background-image: radial-gradient(#cc18ff, #ffaa27);
+}
+
 .episode_titre {
+    font-family: 'Courgette', cursive;
     text-align: center;
     color: green;
 }
 
-.titreBillet {
-    margin-bottom: 0px;
+.titreEpisode {
+    font-family: 'Courgette', cursive;
+    margin-bottom: 0;
 }
 
 #global {
-  
+    opacity: .8;
+    z-index: 1;
     min-height: 100%; /* 100% de la hauteur du view-port*/
     background: silver;
     width: 70%;
@@ -48,12 +66,13 @@ body {
     margin-bottom: 20px;
 }
 
-.indication strong{
-    color:blueviolet;
+.indication strong {
+    font-size: larger;
+    color: blueviolet;
 }
 
 .bienvenue {
-
+    font-family: 'Merienda', cursive;
     text-align: center;
 }
 
@@ -73,31 +92,39 @@ body {
     padding-left: 30px;
 }
 
+.commentaire_form .btn {
+    margin-bottom: 100px;
+
+}
+
 .commentaire_form, .commentaire_affich {
     margin-bottom: 20px;
     width: 100vh;
 }
 
 .admin {
- margin-top: 25vh;
+    margin-top: 25vh;
 }
 
 /* affiche les boutons commentaire et abusif sur une même ligne */
 #bouton_commenter, #bouton_abusif {
     display: inline-block;
+    margin-bottom: 15px;
 }
 
 #photo_jf img {
     margin: auto;
-    width: 50px;
+    width: 70px;
 }
 
 .aPropos {
-    text-align: justified;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
     width: 13%;
-    border:1px black solid;
+    border: 1px black solid;
     border-radius: 10px;
-    box-shadow:6px 6px 6px #ffb20d;
+    box-shadow: 6px 6px 6px #ffb20d;
     background-color: darkgoldenrod;
     position: fixed;
     top: 10px;
@@ -105,11 +132,15 @@ body {
     padding: 1% 1%;
 }
 
-.dernCommentaires{
+.aPropos h1 {
+    font-size: 1.8em;
+}
+
+.dernCommentaires {
     width: 13%;
-    border:1px black solid;
+    border: 1px black solid;
     border-radius: 10px;
-    box-shadow:6px 6px 6px #73b3ff;
+    box-shadow: 6px 6px 6px #73b3ff;
     background-color: #95b85c;
     position: fixed;
     top: 10px;
@@ -118,10 +149,10 @@ body {
 
 }
 
-.dernCommentaires li{
+.dernCommentaires li {
     word-wrap: break-word;
-    text-align:left;
-
+    text-align: left;
+    font-size: .8em;
 }
 
 @media all and (max-width: 1024px) {

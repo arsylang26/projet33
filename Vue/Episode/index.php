@@ -31,9 +31,8 @@
 <hr/>
 <header>
     <?php
-   // var_dump($commentaires->fetch());
             if (count($commentaires)) {
-                echo '<h1 id="titreReponses">Réponses à : ' . $this->nettoyer($episode['titre']) . '</h1>';
+                echo '<p class="indication">Réponses à : <strong>"' . $this->nettoyer($episode['titre']) . '"</strong></p>';
             }else {
                 echo'Cet épisode n\'a encore aucun commentaire';
             }

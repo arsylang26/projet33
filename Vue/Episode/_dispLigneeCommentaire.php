@@ -29,12 +29,12 @@ foreach ($commentaires as $lignee) { ?>
                 <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" minlength="3" maxlength="10" autofocus required/>
             </div>
             <div class="form-group">
-                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" minlength="10" maxlength="140" required></textarea>
+                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" minlength="10" maxlength="300" required></textarea>
             </div>
             <input type="hidden" name="id_episode" value="<?= $episode['id'] ?>"/>
             <input type="hidden" name="parent" value="<?= $lignee['id'] ?> "/>
-            <button class="btn-xs btn-success" type="submit">Envoyer</button>
-            <button class="btn-xs btn-warning" type="reset">Annuler</button>
+            <button class="btn btn-xs btn-success" type="submit">Envoyer</button>
+            <button class="btn btn-xs btn-warning" type="reset">Annuler</button>
         </form>
     </div>
     <!-- fonction récursive pour obtenir les enfants de commentaires-->
