@@ -4,39 +4,25 @@ require_once 'Requete.php';
 require_once 'Vue.php';
 
 
-
-
 /**
  * Classe abstraite Controleur
  * Fournit des services communs aux classes Controleur dérivées
- * 
+ *
  * @version 1.0
  * @author Baptiste Pesquet
  */
-abstract class Controleur {
-//le message flash
-private $flash;
-
-    /** Action à réaliser */
-    private $action;
-
-    
+abstract class Controleur
+{
     /** Requête entrante
      * var Requete
      */
     protected $requete;
-
-    // constructeur des messages flash
-    public function getFlash(){
-        if (!$this->flash) {
-            $this->flash = new \FlashMessages\FlashMessages();
-        }
-        return ($this->flash);
-    }
-
+    private $flash; // le message flash
+    /** Action à réaliser */
+    private $action;
     /**
      * Définit la requête entrante
-     * 
+     *
      * @param Requete $requete Requete entrante
      */
     public function setRequete(Requete $requete)
@@ -47,7 +33,7 @@ private $flash;
     /**
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
-     * 
+     *
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
     public function executerAction($action)
@@ -55,8 +41,7 @@ private $flash;
         if (method_exists($this, $action)) {
             $this->action = $action;
             $this->{$this->action}();
-        }
-        else {
+        } else {
             $classeControleur = get_class($this);
             throw new Exception("Action '$action' non définie dans la classe $classeControleur");
         }
@@ -70,7 +55,7 @@ private $flash;
 
     /**
      * Génère la vue associée au contrôleur courant
-     * 
+     *
      * @param array $donneesVue Données nécessaires pour la génération de la vue
      */
     protected function genererVue($donneesVue = array(), $action = null)
@@ -87,12 +72,20 @@ private $flash;
 
         // Instanciation et génération de la vue
         $vue = new Vue($actionVue, $controleurVue);
-        $vue->generer($donneesVue,$this->getFlash());
+        $vue->generer($donneesVue, $this->getFlash());
+    }
+ //  si pas de flash en cours
+    public function getFlash()
+    {
+        if (!$this->flash) {
+            $this->flash = new \FlashMessages\FlashMessages();
+        }
+        return ($this->flash);
     }
 
     /**
      * Effectue une redirection vers un contrôleur et une action spécifiques
-     * 
+     *
      * @param string $controleur Contrôleur
      * @param type $action Action Action
      */

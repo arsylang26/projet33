@@ -21,7 +21,7 @@ foreach ($commentaires as $lignee) { ?>
 
     <!--affichage de la zone de saisie des commentaires de commentaire-->
     <div class="commentaire_form collapse" id="commentaire_form_<?= $lignee['id'] ?>">
-        <form method="post" action="episode/commenterCommentaire">
+        <form method="post" action="episode/commenter">
             <div class="form-group">
                 <legend>votre commentaire:</legend>
             </div>
@@ -29,9 +29,10 @@ foreach ($commentaires as $lignee) { ?>
                 <input id="auteur" name="auteur" type="text" placeholder="Votre pseudo" minlength="3" maxlength="10" autofocus required/>
             </div>
             <div class="form-group">
-                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" minlength="10" maxlength="300" required></textarea>
+                <textarea id="txtCommentaire" name="contenu" rows="4" placeholder="Votre commentaire" minlength="10" maxlength="500" required></textarea>
+                <p>Maximum 500 caractères</p>
             </div>
-            <input type="hidden" name="id_episode" value="<?= $episode['id'] ?>"/>
+            <input type="hidden" name="id" value="<?= $episode['id'] ?>"/>
             <input type="hidden" name="parent" value="<?= $lignee['id'] ?> "/>
             <button class="btn btn-xs btn-success" type="submit">Envoyer</button>
             <button class="btn btn-xs btn-warning" type="reset">Annuler</button>

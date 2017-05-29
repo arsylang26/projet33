@@ -18,8 +18,8 @@
                        autofocus required/>
             </div>
             <div class="form-group">
-                <textarea id="txtCommentaire" name="contenu" rows="4"  minlength="10" maxlength="140" placeholder="Votre commentaire" required></textarea>
-                <p>maximum 140 caractères</p>
+                <textarea id="txtCommentaire" name="contenu" rows="4"  minlength="10" maxlength="500" placeholder="Votre commentaire" required></textarea>
+                <p>maximum 500 caractères</p>
             </div>
 
             <input type="hidden" name="id" value="<?= $this->nettoyer($episode['id']) ?>"/>

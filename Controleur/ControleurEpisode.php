@@ -21,7 +21,6 @@ class ControleurEpisode extends Controleur
         $idEpisode = $this->requete->getParametre("id");
         $episode = $this->episode->getEpisode($idEpisode);
         $commentaires = $this->commentaire->getCommentaires($idEpisode, 0);
-        //$this->getFlash()->display();
         $this->genererVue(array('episode' => $episode, 'commentaires' => $commentaires, 'modeleCommentaire' => $this->commentaire));
 
     }
@@ -32,11 +31,10 @@ class ControleurEpisode extends Controleur
         $auteur = $this->requete->getParametre("auteur");
         $idEpisode = $this->requete->getParametre("id");
         $contenu = $this->requete->getParametre("contenu");
-        $parentCommentaire = $this->requete->getParametre("parent",null);
-
+        $parentCommentaire = $this->requete->getParametre("parent", null);
         try {
             //vérification de la longueur des champs
-            if (strlen($auteur)>=3 && strlen($auteur)<=15 && strlen($contenu)>=10 && strlen($contenu)<=140){  
+            if (strlen($auteur) >= 3 && strlen($auteur) <= 15 && strlen($contenu) >= 10 && strlen($contenu) <= 500) {
                 if (!$parentCommentaire) { //s'il était null alors
                     $rangCommentaire = 0; // c'est le commentaire de l'épisode
                 } else {                  // sinon c'est un commentaire de commentaire
@@ -47,42 +45,39 @@ class ControleurEpisode extends Controleur
                         throw new Exception("erreur dans le rang du commentaire");
                     }
                 }
-            }
-            else {
+            } else {
                 throw new Exception("erreur de saisie");
             }
-        
-    
-} catch
-    (Exception $e) {
-    $this->erreur($e->getMessage());
-}
-$this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-$this->getFlash()->success('le commentaire a bien été ajouté',null,true);
-
-$this->rediriger("episode" . $idEpisode);
-}
+        } catch
+        (Exception $e) {
+            $this->erreur($e->getMessage());
+        }
+        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
+        $this->getFlash()->success('le commentaire a bien été ajouté', null, true);
+        $this->rediriger("episode" . $idEpisode);
+    }
 
 // marquer comme abusif un commentaire
-public function signalerAbusif()
-{
-    $idEpisode = $this->requete->getParametre("id_episode");
-    $idCommentaire = $this->requete->getParametre("id");
-    $this->commentaire->signCommentaireAbusif($idCommentaire);
-    $this->getFlash()->success('le commentaire a bien été signalé comme abusif',null,true);
 
-    $this->rediriger("episode" . $idEpisode);
-}
+    public function erreur()
+    {
+        $msgErreur = $this->requete->getParametre();
+        $this->getFlash()->warning('grosse erreur');
+        $this->genererVue(array('msgErreur' => $msgErreur));
+    }
 
 
 // gére les messages d'erreur
-public function erreur()
-{
-    $msgErreur = $this->requete->getParametre();
-    $this->getFlash()->warning('grosse erreur');
-    $this->genererVue(array('msgErreur' => $msgErreur));
-}
 
+    public function signalerAbusif()
+    {
+        $idEpisode = $this->requete->getParametre("id_episode");
+        $idCommentaire = $this->requete->getParametre("id");
+        $this->commentaire->signCommentaireAbusif($idCommentaire);
+        $this->getFlash()->success('le commentaire a bien été signalé comme abusif', null, true);
+
+        $this->rediriger("episode" . $idEpisode);
+    }
 
 
 }

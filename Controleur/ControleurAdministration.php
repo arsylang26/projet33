@@ -3,7 +3,6 @@ require_once 'ControleurSecurise.php';
 require_once 'Modele/Episode.php';
 require_once 'Modele/Commentaire.php';
 
-//require_once 'Controleur/ControleurEpisode.php';
 
 class ControleurAdministration extends ControleurSecurise
 {

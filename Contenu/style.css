@@ -118,8 +118,7 @@ body {
 }
 
 .aPropos {
-    display: flex;
-    flex-direction: column;
+    font-weight: bolder;
     text-align: justify;
     width: 13%;
     border: 1px black solid;
@@ -130,6 +129,7 @@ body {
     top: 10px;
     right: 1%;
     padding: 1% 1%;
+    font-size: small;
 }
 
 .aPropos h1 {
@@ -151,7 +151,7 @@ body {
 
 .dernCommentaires li {
     word-wrap: break-word;
-    text-align: left;
+    text-align: justify;
     font-size: .8em;
 }
 
@@ -159,7 +159,6 @@ body {
     body aside {
         display: none;
     }
-
 }
 
 

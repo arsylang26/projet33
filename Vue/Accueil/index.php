@@ -1,31 +1,31 @@
-<?php  $this->titre="accueil";
+<?php $this->titre = "accueil";
 foreach ($episodes as $episode): ?>
-<article>
-    <header>
-        <a href="<?= "episode/index/" . $this->nettoyer($episode['id']) ?>">
-            <h1 class="titreEpisode"><?= $this->nettoyer($episode['titre']) ?></h1>
-        </a>
-        <time><?= $this->nettoyer($episode['date']) ?></time>
-    </header>
-    <div class="episode_contenu">
-        <?php
-    $contenu = strip_tags($episode['contenu']); //supprime les balises html créés par TinyMCE
-           if (strlen($contenu) > 400) {               //troncature à 400 caractères pour l'affichage de l'aperçu
-               $contenu = substr($contenu,0,400) . "  ...";
-           }
-           echo $contenu;
-        ?>
-    </div>
-    <?php if (isset($_SESSION['admin'])) { ?>
-    <a type="button" class="confirm btn btn-warning btn-sm"
-       href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer
-        l'épisode </a>
-    <a class="btn btn-primary btn-sm"
-       href="<?= "administration/modifEpisode/" . $this->nettoyer($episode['id']) ?>">
-        modifier l'épisode</a>
-    <?php } ?>
-</article>
-<hr/>
+    <article>
+        <header>
+            <a href="<?= "episode/index/" . $this->nettoyer($episode['id']) ?>">
+                <h1 class="titreEpisode"><?= $this->nettoyer($episode['titre']) ?></h1>
+            </a>
+            <time><?= $this->nettoyer($episode['date']) ?></time>
+        </header>
+        <div class="episode_contenu">
+            <?php
+            $contenu = strip_tags($episode['contenu']); //supprime les balises html créés par TinyMCE
+            if (strlen($contenu) > 400) {               //troncature à 400 caractères pour l'affichage de l'aperçu
+                $contenu = substr($contenu, 0, 400) . "  ...";
+            }
+            echo $contenu;
+            ?>
+        </div>
+        <?php if (isset($_SESSION['admin'])) { ?>
+            <a type="button" class="confirm btn btn-warning btn-sm"
+               href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer
+                l'épisode </a>
+            <a class="btn btn-primary btn-sm"
+               href="<?= "administration/modifEpisode/" . $this->nettoyer($episode['id']) ?>">
+                modifier l'épisode</a>
+        <?php } ?>
+    </article>
+    <hr/>
 <?php endforeach; ?>
 
 <aside class="aPropos">
@@ -50,7 +50,11 @@ foreach ($episodes as $episode): ?>
     <ul class="list-group">
         <?php
         foreach ($dernCommentaires as $commentaire) {
-            echo '<li class="list-group-item">" ' . $commentaire['contenu'] . ' "</li></br>';
+            $dispComm = $commentaire['contenu'];
+            if (strlen($dispComm)> 250) {
+                $dispComm = substr($dispComm, 0, 250) . "...";
+            }
+            echo '<li class="list-group-item">" ' . $dispComm . ' "</li></br>';
         }
         ?>
     </ul>
