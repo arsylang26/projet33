@@ -44,7 +44,10 @@ class ControleurEpisode extends Controleur
                     } else {
                         throw new Exception("erreur dans le rang du commentaire");
                     }
+
                 }
+                $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
+                $this->getFlash()->success('le commentaire a bien été ajouté', null, true);
             } else {
                 throw new Exception("erreur de saisie");
             }
@@ -52,22 +55,18 @@ class ControleurEpisode extends Controleur
         (Exception $e) {
             $this->erreur($e->getMessage());
         }
-        $this->commentaire->ajouterCommentaire($auteur, $contenu, $idEpisode, $rangCommentaire, $parentCommentaire);
-        $this->getFlash()->success('le commentaire a bien été ajouté', null, true);
         $this->rediriger("episode" . $idEpisode);
     }
 
-// marquer comme abusif un commentaire
 
-    public function erreur()
+
+    public function erreur($msgErreur)
     {
-        $msgErreur = $this->requete->getParametre();
-        $this->getFlash()->warning('grosse erreur');
-        $this->genererVue(array('msgErreur' => $msgErreur));
+        $this->getFlash()->warning($msgErreur);
     }
 
 
-// gére les messages d'erreur
+// marquer comme abusif un commentaire
 
     public function signalerAbusif()
     {

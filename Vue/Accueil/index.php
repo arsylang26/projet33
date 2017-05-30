@@ -20,6 +20,7 @@ foreach ($episodes as $episode): ?>
             <a type="button" class="confirm btn btn-warning btn-sm"
                href="<?= "administration/supprEpisode/" . $this->nettoyer($episode['id']) ?>">supprimer
                 l'épisode </a>
+
             <a class="btn btn-primary btn-sm"
                href="<?= "administration/modifEpisode/" . $this->nettoyer($episode['id']) ?>">
                 modifier l'épisode</a>
@@ -31,7 +32,7 @@ foreach ($episodes as $episode): ?>
 <aside class="aPropos">
     <h1>A propos de l'auteur</h1>
     <p id="photo_jf">
-        <img src="Contenu/images/photo_jf.jpg" alt="photo de Jean Forteroche">
+        <img src="Contenu/images/photo_jf.jpg" alt="photo de Jean Forteroche" width="70px">
     </p>
     <p>
         Ma vocation d'écrivain est apparue tardivement après ma longue carrière cinématographique.
@@ -51,7 +52,7 @@ foreach ($episodes as $episode): ?>
         <?php
         foreach ($dernCommentaires as $commentaire) {
             $dispComm = $commentaire['contenu'];
-            if (strlen($dispComm)> 250) {
+            if (strlen($dispComm) > 250) {
                 $dispComm = substr($dispComm, 0, 250) . "...";
             }
             echo '<li class="list-group-item">" ' . $dispComm . ' "</li></br>';

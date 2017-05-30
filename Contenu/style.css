@@ -55,7 +55,7 @@ body {
     opacity: .8;
     z-index: 1;
     min-height: 100%; /* 100% de la hauteur du view-port*/
-    background: silver;
+    background:#e6eeff;
     width: 70%;
     margin: auto; /* Permet de centrer la div */
     text-align: justify;
@@ -112,9 +112,8 @@ body {
     margin-bottom: 15px;
 }
 
-#photo_jf img {
-    margin: auto;
-    width: 70px;
+#photo_jf {
+    text-align: center;
 }
 
 .aPropos {
