@@ -4,7 +4,6 @@
     <meta charset="UTF-8"/>
     <base href="<?= $racineWeb ?>">
     <link rel="stylesheet" href="Contenu/style.css"/>
-    <
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Raleway|Courgette|Merienda" rel="stylesheet">
     <link href="Contenu/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title><?= $titre ?></title>
@@ -55,7 +54,8 @@
 <script src="Contenu/jquery.js"></script>
 <script src="Contenu/bootstrap/js/bootstrap.js"></script>
 <script src="Contenu/TinyMCE/js/tinymce/tinymce.min.js"></script>
-<script>tinymce.init({selector: 'textarea.tiny', language: 'fr_FR'});</script>
+<script>tinymce.init({selector: 'textarea.tiny', language: 'fr_FR',entity_encoding : "raw",
+        encoding: "UTF-8"});</script>
 <script src="Contenu/script.js"></script>
 </body>
 </html>

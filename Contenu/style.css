@@ -9,6 +9,7 @@ body {
     background-size: cover;
     background-attachment: fixed;
     z-index: 0;
+    word-wrap: break-word;
 }
 
 #contenu .tab_abusif:hover {
@@ -22,9 +23,11 @@ body {
     padding: 15px;
     font-size: 1.5em;
     margin-bottom: 10px; /* espace le bouton commenter */
-    word-wrap: break-word;
-}
 
+}
+.container .commentaire_affich{
+    width:100%;
+}
 .commentaire_contenu {
     font-family: 'Indie Flower', cursive;;
     border: 1px limegreen solid;
@@ -44,12 +47,14 @@ body {
     font-family: 'Courgette', cursive;
     text-align: center;
     color: green;
+
 }
 
 .titreEpisode {
     font-family: 'Courgette', cursive;
     margin-bottom: 0;
 }
+
 
 #global {
     opacity: .8;
@@ -60,6 +65,9 @@ body {
     margin: auto; /* Permet de centrer la div */
     text-align: justify;
     padding: 5px 20px;
+    margin-top:12px;
+    margin-bottom:12px;
+    border-radius:10px;
 }
 
 #contenu {

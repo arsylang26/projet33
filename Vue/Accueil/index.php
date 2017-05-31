@@ -10,7 +10,8 @@ foreach ($episodes as $episode): ?>
         <div class="episode_contenu">
             <?php
             $contenu = strip_tags($episode['contenu']); //supprime les balises html créés par TinyMCE
-            if (strlen($contenu) > 400) {               //troncature à 400 caractères pour l'affichage de l'aperçu
+            $nbChar=strlen(utf8_decode($contenu));
+            if ($nbChar > 400) {               //troncature à 400 caractères pour l'affichage de l'aperçu
                 $contenu = substr($contenu, 0, 400) . "  ...";
             }
             echo $contenu;
