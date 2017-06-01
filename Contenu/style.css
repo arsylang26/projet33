@@ -25,9 +25,14 @@ body {
     margin-bottom: 10px; /* espace le bouton commenter */
 
 }
-.container .commentaire_affich{
-    width:100%;
+
+.container .commentaire_affich {
+    width: 100%;
+    padding: 10px 5px 0;
+    background-color: papayawhip;
+    border-radius: 10px;
 }
+
 .commentaire_contenu {
     font-family: 'Indie Flower', cursive;;
     border: 1px limegreen solid;
@@ -55,19 +60,18 @@ body {
     margin-bottom: 0;
 }
 
-
 #global {
     opacity: .8;
     z-index: 1;
     min-height: 100%; /* 100% de la hauteur du view-port*/
-    background:#e6eeff;
+    background: #e6eeff;
     width: 70%;
     margin: auto; /* Permet de centrer la div */
     text-align: justify;
     padding: 5px 20px;
-    margin-top:12px;
-    margin-bottom:12px;
-    border-radius:10px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
 }
 
 #contenu {
@@ -108,6 +112,7 @@ body {
 .commentaire_form, .commentaire_affich {
     margin-bottom: 20px;
     width: 100vh;
+    border: 1px solid darkorange;
 }
 
 .admin {
@@ -122,6 +127,10 @@ body {
 
 #photo_jf {
     text-align: center;
+}
+
+#photo_jf img {
+    border-radius: 10px 0;
 }
 
 .aPropos {
@@ -153,7 +162,6 @@ body {
     top: 10px;
     left: 1%;
     padding: 1% 1%;
-
 }
 
 .dernCommentaires li {
